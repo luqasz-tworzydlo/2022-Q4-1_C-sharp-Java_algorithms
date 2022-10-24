@@ -1,0 +1,8 @@
+C:\Users\Łukasz Tworzydło\source\repos\e1-indexes-array\e1-indexes-array\obj\Debug\e1-indexes-array.csproj.AssemblyReference.cache
+C:\Users\Łukasz Tworzydło\source\repos\e1-indexes-array\e1-indexes-array\obj\Debug\e1-indexes-array.csproj.SuggestedBindingRedirects.cache
+C:\Users\Łukasz Tworzydło\source\repos\e1-indexes-array\e1-indexes-array\obj\Debug\e1-indexes-array.csproj.CoreCompileInputs.cache
+C:\Users\Łukasz Tworzydło\source\repos\e1-indexes-array\e1-indexes-array\bin\Debug\e1-indexes-array.exe.config
+C:\Users\Łukasz Tworzydło\source\repos\e1-indexes-array\e1-indexes-array\bin\Debug\e1-indexes-array.exe
+C:\Users\Łukasz Tworzydło\source\repos\e1-indexes-array\e1-indexes-array\bin\Debug\e1-indexes-array.pdb
+C:\Users\Łukasz Tworzydło\source\repos\e1-indexes-array\e1-indexes-array\obj\Debug\e1-indexes-array.exe
+C:\Users\Łukasz Tworzydło\source\repos\e1-indexes-array\e1-indexes-array\obj\Debug\e1-indexes-array.pdb
