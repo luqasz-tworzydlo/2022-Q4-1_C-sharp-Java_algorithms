@@ -1,0 +1,8 @@
+C:\Users\Łukasz Tworzydło\source\repos\e3-fifo_first-in-first-out\e3-fifo_first-in-first-out\bin\Debug\e3-fifo_first-in-first-out.exe.config
+C:\Users\Łukasz Tworzydło\source\repos\e3-fifo_first-in-first-out\e3-fifo_first-in-first-out\bin\Debug\e3-fifo_first-in-first-out.exe
+C:\Users\Łukasz Tworzydło\source\repos\e3-fifo_first-in-first-out\e3-fifo_first-in-first-out\bin\Debug\e3-fifo_first-in-first-out.pdb
+C:\Users\Łukasz Tworzydło\source\repos\e3-fifo_first-in-first-out\e3-fifo_first-in-first-out\obj\Debug\e3-fifo_first-in-first-out.csproj.AssemblyReference.cache
+C:\Users\Łukasz Tworzydło\source\repos\e3-fifo_first-in-first-out\e3-fifo_first-in-first-out\obj\Debug\e3-fifo_first-in-first-out.csproj.SuggestedBindingRedirects.cache
+C:\Users\Łukasz Tworzydło\source\repos\e3-fifo_first-in-first-out\e3-fifo_first-in-first-out\obj\Debug\e3-fifo_first-in-first-out.csproj.CoreCompileInputs.cache
+C:\Users\Łukasz Tworzydło\source\repos\e3-fifo_first-in-first-out\e3-fifo_first-in-first-out\obj\Debug\e3-fifo_first-in-first-out.exe
+C:\Users\Łukasz Tworzydło\source\repos\e3-fifo_first-in-first-out\e3-fifo_first-in-first-out\obj\Debug\e3-fifo_first-in-first-out.pdb
