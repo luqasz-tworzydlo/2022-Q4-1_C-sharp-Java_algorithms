@@ -1,0 +1,8 @@
+C:\Users\Łukasz Tworzydło\source\repos\e4-linked_lists\e4-linked_lists\obj\Debug\e4-linked_lists.csproj.AssemblyReference.cache
+C:\Users\Łukasz Tworzydło\source\repos\e4-linked_lists\e4-linked_lists\obj\Debug\e4-linked_lists.csproj.SuggestedBindingRedirects.cache
+C:\Users\Łukasz Tworzydło\source\repos\e4-linked_lists\e4-linked_lists\obj\Debug\e4-linked_lists.csproj.CoreCompileInputs.cache
+C:\Users\Łukasz Tworzydło\source\repos\e4-linked_lists\e4-linked_lists\bin\Debug\e4-linked_lists.exe.config
+C:\Users\Łukasz Tworzydło\source\repos\e4-linked_lists\e4-linked_lists\bin\Debug\e4-linked_lists.exe
+C:\Users\Łukasz Tworzydło\source\repos\e4-linked_lists\e4-linked_lists\bin\Debug\e4-linked_lists.pdb
+C:\Users\Łukasz Tworzydło\source\repos\e4-linked_lists\e4-linked_lists\obj\Debug\e4-linked_lists.exe
+C:\Users\Łukasz Tworzydło\source\repos\e4-linked_lists\e4-linked_lists\obj\Debug\e4-linked_lists.pdb
