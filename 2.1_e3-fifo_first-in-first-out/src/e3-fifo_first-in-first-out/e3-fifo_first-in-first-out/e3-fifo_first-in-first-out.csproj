@@ -46,10 +46,7 @@
     <Compile Include="3_Biblioteka.cs" />
     <Compile Include="2_KolejkaFIFO.cs" />
     <Compile Include="1_Program.cs" />
-    <Compile Include="4_FIFO_testowa_TBD.cs" />
-    <Compile Include="5_Baza_TBD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="6_Stos_TBD.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

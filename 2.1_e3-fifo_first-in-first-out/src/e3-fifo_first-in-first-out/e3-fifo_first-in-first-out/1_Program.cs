@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace e3_fifo_first_in_first_out
+namespace e3_fifo_first_in_first_out // KomitetKolejkowy
 {
     class Program
     {
@@ -17,8 +17,8 @@ namespace e3_fifo_first_in_first_out
             Console.WriteLine("\n\t\tC - Podaj liczbę osób w kolejce");
             Console.WriteLine("\n\t\tD - Wyczyść kolejkę");
             Console.WriteLine("\n\t\tK - Koniec");
-            return Console.ReadKey(true).KeyChar;
 
+            return Console.ReadKey(true).KeyChar;
         }
         static void Main(string[] args)
         {
