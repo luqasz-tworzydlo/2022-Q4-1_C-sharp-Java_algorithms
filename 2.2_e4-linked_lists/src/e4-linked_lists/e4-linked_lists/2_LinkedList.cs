@@ -115,7 +115,7 @@ namespace e4_linked_lists
                 {
                     // set link and reduce count
                     previousNode.Next = currentNode.Next;
-                    previousNode.Next.Previous = currentNode.Previous; // poprawa błędu
+                    if (previousNode.Next != null) { previousNode.Next.Previous = currentNode.Previous; } // poprawa błędu
                     count--;
 
                     return true;

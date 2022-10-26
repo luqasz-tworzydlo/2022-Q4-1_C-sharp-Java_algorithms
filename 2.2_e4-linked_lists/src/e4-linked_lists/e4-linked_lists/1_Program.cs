@@ -23,7 +23,8 @@ namespace e4_linked_lists
             lista.Add(100);
             lista.Add(200);
             lista.Add(300);
-            lista.Remove(200);
+            //lista.Remove(200);
+            lista.Remove(100);
             // Console.WriteLine(lista);
 
             // metoda, któr dokładniej wypisuje informacje o węzłach
