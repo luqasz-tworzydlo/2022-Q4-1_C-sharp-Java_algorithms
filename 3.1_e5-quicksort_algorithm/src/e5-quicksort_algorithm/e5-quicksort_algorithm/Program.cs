@@ -6,40 +6,44 @@ using System.Threading.Tasks;
 
 namespace e5_quicksort_algorithm
 {
-    internal class Program
+    class Program
     {
         static void Main(string[] args)
         {
             // nieposortowana tablica
             // [do posortowania przy użyciu quicksort]
-            int[] tablica = { 6, 5, 4, 3, 2, 1, 9, 8, 7 };
+            int[] tablica = new int[] { 6, 5, 4, 3, 2, 1, 9, 8, 7 };
 
-            Console.WriteLine("Pierwotny wygląd tablicy to: ");
+            Console.WriteLine("=> Pierwotny wygląd tablicy to: ");
             foreach (var element in tablica)
             {
-                Console.WriteLine("=> " + tablica);
+                Console.Write(" " + element);
             }
 
             Quick_Sort(tablica, 0, tablica.Length - 1);
-            Console.WriteLine("\nPosegregowana tablica przy użyciu" +
+
+            Console.WriteLine("\n=> Posegregowana tablica przy użyciu" +
                 "\nsortowania szybkiego [czyli quicksort]:");
-            foreach (var element_sort in tablica)
+
+            foreach (var element_nowy in tablica)
             {
-                Console.WriteLine("=> " + tablica);
+                Console.Write(" " + element_nowy);
             }
 
             Console.ReadKey();
         }
-        static void Quick_Sort(int[] a, int p, int r)
+
+        private static void Quick_Sort(int[] a, int p, int r)
         {
-            // a => tablica do posortowania
-            // p => początkowy indeks [od lewej]
-            // r => ostatni indeks [od prawej]
             if (p < r)
             {
+                // a => tablica do posortowania
+                // p => początkowy indeks [od lewej]
+                // r => ostatni indeks [od prawej]
                 int q = Partition(a, p, r);
                 // q => to jest pivot
-                if (q > 1) // jeśli pivot jest większy od 1
+
+                if (q > 1) // jeśli pivot jest większy od
                 {
                     Quick_Sort(a, p, q - 1);
                 }
@@ -49,24 +53,27 @@ namespace e5_quicksort_algorithm
                 }
             }
         }
-        static int Partition(int[] a, int p, int r)
+
+        private static int Partition(int[] a, int p, int r)
         {
-            int x = a[p]; // pivot = tablica[lewa]
+            int q = a[p];
+            // q => to jest pivot
+
             while (true)
             {
-                while (a[p] < x)
+                while (a[p] < q)
                 { p++; }
-                while (a[r] > x)
+
+                while (a[r] > q)
                 { r--; }
 
                 if (p < r)
                 {
-                    if (a[p] == a[r])
-                        return r;
+                    if (a[p] == a[r]) return r;
 
-                    int t = a[p]; // t => tymczasowe
+                    int swap = a[p];
                     a[p] = a[r];
-                    a[r] = t;
+                    a[r] = swap;
                 }
                 else
                 {
