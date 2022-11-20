@@ -1,7 +1,0 @@
-C:\Users\Łukasz Tworzydło\source\repos\e5-quicksort_algorithm\e5-quicksort_algorithm\bin\Debug\e5-quicksort_algorithm.exe.config
-C:\Users\Łukasz Tworzydło\source\repos\e5-quicksort_algorithm\e5-quicksort_algorithm\bin\Debug\e5-quicksort_algorithm.exe
-C:\Users\Łukasz Tworzydło\source\repos\e5-quicksort_algorithm\e5-quicksort_algorithm\bin\Debug\e5-quicksort_algorithm.pdb
-C:\Users\Łukasz Tworzydło\source\repos\e5-quicksort_algorithm\e5-quicksort_algorithm\obj\Debug\e5-quicksort_algorithm.csproj.AssemblyReference.cache
-C:\Users\Łukasz Tworzydło\source\repos\e5-quicksort_algorithm\e5-quicksort_algorithm\obj\Debug\e5-quicksort_algorithm.csproj.CoreCompileInputs.cache
-C:\Users\Łukasz Tworzydło\source\repos\e5-quicksort_algorithm\e5-quicksort_algorithm\obj\Debug\e5-quicksort_algorithm.exe
-C:\Users\Łukasz Tworzydło\source\repos\e5-quicksort_algorithm\e5-quicksort_algorithm\obj\Debug\e5-quicksort_algorithm.pdb
