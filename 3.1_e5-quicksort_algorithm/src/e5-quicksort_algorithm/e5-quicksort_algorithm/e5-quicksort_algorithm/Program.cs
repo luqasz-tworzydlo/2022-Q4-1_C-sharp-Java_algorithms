@@ -14,21 +14,30 @@ namespace e5_quicksort_algorithm
             // [do posortowania przy użyciu quicksort]
             int[] tablica = new int[] { 6, 5, 4, 3, 2, 1, 9, 8, 7 };
 
-            Console.WriteLine("=> Pierwotny wygląd tablicy to: ");
+            /*Console.WriteLine("=> Pierwotny wygląd tablicy to: ");
             foreach (var element in tablica)
             {
                 Console.Write(" " + element);
             }
 
-            Quick_Sort(tablica, 0, tablica.Length - 1);
-
             Console.WriteLine("\n=> Posegregowana tablica przy użyciu" +
                 "\nsortowania szybkiego [czyli quicksort]:");
+
+            Quick_Sort(tablica, 0, tablica.Length - 1);
 
             foreach (var element_nowy in tablica)
             {
                 Console.Write(" " + element_nowy);
-            }
+            }*/
+
+            Console.WriteLine("\n=> Indeksy dla pierwszych trzech swap'ów" +
+                "\nprzy szybkim sortowaniu [quicksort'a]:");
+
+            Pair(tablica, 0, tablica.Length - 1);
+            Pair(tablica, 1, tablica.Length - 1);
+            Pair(tablica, 2, tablica.Length - 1);
+
+            Console.WriteLine();
 
             Console.ReadKey();
         }
@@ -75,10 +84,42 @@ namespace e5_quicksort_algorithm
                     a[p] = a[r];
                     a[r] = swap;
                 }
+                else if (p == r)
+                {
+                    return p++;
+                }
                 else
                 {
                     return r;
                 }
+            }
+        }
+        private static void Swap(ref int a, ref int b)
+        {
+            ( a , b ) = ( b , a );
+        }
+        private static int Pair(int[] a, int p, int r)
+        {
+            int x = a[p];
+            int i = p - 1,
+                j = r + 1;
+            int licz = 0;
+
+            for (;;)
+            {
+                while (a[--j] > x) ;
+                while (a[++i] < x) ;
+                if (i < j)
+                {
+                    if (licz < 3)
+                    {
+                        Console.WriteLine("{0} {1}", i, j);
+                        licz++;
+                    }
+                    Swap(ref a[i], ref a[j]);
+                }
+                else
+                    return j;
             }
         }
     }
