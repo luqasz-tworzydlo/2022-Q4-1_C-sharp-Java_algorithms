@@ -14,30 +14,28 @@ namespace e5_quicksort_algorithm
             // [do posortowania przy użyciu quicksort]
             int[] tablica = new int[] { 6, 5, 4, 3, 2, 1, 9, 8, 7 };
 
-            /*Console.WriteLine("=> Pierwotny wygląd tablicy to: ");
+            Console.WriteLine("=> Pierwotny wygląd tablicy to: ");
             foreach (var element in tablica)
             {
                 Console.Write(" " + element);
             }
 
+            Console.WriteLine("\n\n=> Indeksy dla pierwszych trzech swap'ów" +
+                "\nprzy szybkim sortowaniu [quicksort'a]:");
+
+            Pair_Partition(tablica, 0, tablica.Length - 1); // pierwszy swap podczas szybkiego sortowania
+            Pair_Partition(tablica, 1, tablica.Length - 1); // drugi swap podczas szybkiego sortowania
+            Pair_Partition(tablica, 2, tablica.Length - 1); // trzeci swap podczas szybkiego sortowania
+
             Console.WriteLine("\n=> Posegregowana tablica przy użyciu" +
                 "\nsortowania szybkiego [czyli quicksort]:");
 
-            Quick_Sort(tablica, 0, tablica.Length - 1);
+            Quick_Sort(tablica, 0, tablica.Length - 1); // nadpisanie starej tablicy nową, posegregowaną
 
             foreach (var element_nowy in tablica)
             {
                 Console.Write(" " + element_nowy);
-            }*/
-
-            Console.WriteLine("\n=> Indeksy dla pierwszych trzech swap'ów" +
-                "\nprzy szybkim sortowaniu [quicksort'a]:");
-
-            Pair(tablica, 0, tablica.Length - 1);
-            Pair(tablica, 1, tablica.Length - 1);
-            Pair(tablica, 2, tablica.Length - 1);
-
-            Console.WriteLine();
+            }
 
             Console.ReadKey();
         }
@@ -98,7 +96,7 @@ namespace e5_quicksort_algorithm
         {
             ( a , b ) = ( b , a );
         }
-        private static int Pair(int[] a, int p, int r)
+        private static int Pair_Partition(int[] a, int p, int r)
         {
             int x = a[p];
             int i = p - 1,
@@ -113,7 +111,7 @@ namespace e5_quicksort_algorithm
                 {
                     if (licz < 3)
                     {
-                        Console.WriteLine("{0} {1}", i, j);
+                        Console.WriteLine(" {0} {1}", i, j);
                         licz++;
                     }
                     Swap(ref a[i], ref a[j]);
