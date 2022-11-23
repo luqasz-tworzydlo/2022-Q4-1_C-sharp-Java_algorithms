@@ -43,7 +43,7 @@ namespace e5_quicksort_algorithm
             Pair_Partition(tablica, 2, tablica.Length - 1); // trzeci swap podczas szybkiego sortowania*/
 
             // sposób nr 2 [wyświetlenie indeksów dla trzech pierwszych swap'ów przy użyciu quicksort'a]
-            for (int n = 0; n <= 3; n++)
+            for (int n = 0; n < 3; n++)
             {
                 Pair_Partition(tablica, n, tablica.Length - 1);
             }
