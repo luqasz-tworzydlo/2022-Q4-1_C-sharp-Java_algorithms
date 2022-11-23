@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace e5_quicksort_algorithm
 {
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Łukasz Tworzydło - nr albumu: gd29623 [zadanie z quicksort z 07.11.2022]
+    // Informatyka, grupa laboratoryjna: INiS3_PR2.2 [Algorytmy i struktury danych]
+    //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
     class Program
     {
         static void Main(string[] args)
@@ -14,18 +20,52 @@ namespace e5_quicksort_algorithm
             // [do posortowania przy użyciu quicksort]
             int[] tablica = new int[] { 6, 5, 4, 3, 2, 1, 9, 8, 7 };
 
+            /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+            /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+
             Console.WriteLine("=> Pierwotny wygląd tablicy to: ");
             foreach (var element in tablica)
             {
                 Console.Write(" " + element);
             }
 
-            Console.WriteLine("\n\n=> Indeksy dla pierwszych trzech swap'ów" +
+            Console.WriteLine("");
+
+            /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+            /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+
+            Console.WriteLine("\n=> Indeksy dla pierwszych trzech swap'ów" +
                 "\nprzy szybkim sortowaniu [quicksort'a]:");
 
-            Pair_Partition(tablica, 0, tablica.Length - 1); // pierwszy swap podczas szybkiego sortowania
+            // sposób nr 1 [wyświetlenie indeksów dla trzech pierwszych swap'ów przy użyciu quicksort'a]
+            /*Pair_Partition(tablica, 0, tablica.Length - 1); // pierwszy swap podczas szybkiego sortowania
             Pair_Partition(tablica, 1, tablica.Length - 1); // drugi swap podczas szybkiego sortowania
-            Pair_Partition(tablica, 2, tablica.Length - 1); // trzeci swap podczas szybkiego sortowania
+            Pair_Partition(tablica, 2, tablica.Length - 1); // trzeci swap podczas szybkiego sortowania*/
+
+            // sposób nr 2 [wyświetlenie indeksów dla trzech pierwszych swap'ów przy użyciu quicksort'a]
+            for (int n = 0; n <= 3; n++)
+            {
+                Pair_Partition(tablica, n, tablica.Length - 1);
+            }
+
+            /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+            /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+
+            /*Console.WriteLine("\n=> Indeksy dla wszystkich swap'ów" +
+                "\nprzy szybkim sortowaniu [quicksort'a]:");
+
+            double dlugosc_tablicy = tablica.Length;
+            int wartosc_zero = 0;
+
+            do
+            {
+                int n = wartosc_zero;
+                Pair_Partition(tablica, n, tablica.Length - 1);
+                wartosc_zero++;
+            } while (wartosc_zero < dlugosc_tablicy);*/
+
+            /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+            /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
 
             Console.WriteLine("\n=> Posegregowana tablica przy użyciu" +
                 "\nsortowania szybkiego [czyli quicksort]:");
@@ -36,6 +76,9 @@ namespace e5_quicksort_algorithm
             {
                 Console.Write(" " + element_nowy);
             }
+
+            /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+            /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
 
             Console.ReadKey();
         }
