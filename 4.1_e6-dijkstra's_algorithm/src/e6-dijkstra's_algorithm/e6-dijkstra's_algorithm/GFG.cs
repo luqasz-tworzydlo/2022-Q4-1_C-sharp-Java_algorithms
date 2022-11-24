@@ -39,6 +39,8 @@ namespace e6_dijkstra_s_algorithm
                           + "from Source\n");
             for (int i = 0; i < V; i++)
                 Console.Write(i + " \t\t " + dist[i] + "\n");
+
+            // to do ścieżka od 0 do 4 [sekwencja tych wierzchołków, od 1 do 5]
         }
 
         // Function that implements Dijkstra's
@@ -80,6 +82,8 @@ namespace e6_dijkstra_s_algorithm
 
                 // Mark the picked vertex as processed
                 sptSet[u] = true;
+                //int[] P = new int[V];
+                //P[V] = 0;
 
                 // Update dist value of the adjacent
                 // vertices of the picked vertex.
@@ -92,7 +96,10 @@ namespace e6_dijkstra_s_algorithm
                     // than current value of dist[v]
                     if (!sptSet[v] && graph[u, v] != 0 &&
                          dist[u] != int.MaxValue && dist[u] + graph[u, v] < dist[v])
+                    {
                         dist[v] = dist[u] + graph[u, v];
+                        //todo P[V] = u;
+                    }
             }
 
             // print the constructed distance array
