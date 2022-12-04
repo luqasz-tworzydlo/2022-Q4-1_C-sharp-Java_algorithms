@@ -43,10 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GFG.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="2_GFG.cs" />
+    <Compile Include="1_Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Vertex.cs" />
+    <Compile Include="3_This_Vertex.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
