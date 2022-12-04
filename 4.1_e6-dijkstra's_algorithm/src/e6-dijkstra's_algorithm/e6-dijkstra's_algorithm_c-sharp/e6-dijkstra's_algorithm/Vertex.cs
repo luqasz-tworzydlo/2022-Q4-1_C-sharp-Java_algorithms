@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace e6_dijkstra_s_algorithm
 {
-    internal class Vertex
+    internal class This_Vertex
     {
         public String name;
-        public int status;
-        public int predecessor;
-        public int pathLength;
+        public int
+            status,
+            predecessor,
+            pathLength;
 
-        public Vertex(String name)
+        public This_Vertex(String name)
         {
             this.name = name;
         }

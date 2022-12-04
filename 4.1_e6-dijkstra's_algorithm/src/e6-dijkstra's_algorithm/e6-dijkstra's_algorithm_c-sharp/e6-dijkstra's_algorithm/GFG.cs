@@ -8,11 +8,8 @@ namespace e6_dijkstra_s_algorithm
 {
     public class GFG
     {
-        // A utility function to find the
-        // vertex with minimum distance
-        // value, from the set of vertices
-        // not yet included in shortest
-        // path tree
+        // A utility function to find the vertex with minimum distance value,
+        // from the set of vertices not yet included in shortest path tree
         static int Max_Amount_of_Vertices = 5;
         int minDistance(int[] dist,
                         bool[] sptSet)
@@ -30,17 +27,15 @@ namespace e6_dijkstra_s_algorithm
             return min_index;
         }
 
-        // A utility function to print
-        // the constructed distance array
+        // A utility function to print the constructed distance array
         void printSolution(int[] dist, int n)
         {
-            Console.Write("Vertex     Distance "
+            Console.Write("\nVertex     Distance "
                           + "from Source\n");
             for (int i = 0; i < Max_Amount_of_Vertices; i++)
                 Console.Write(i + " \t\t " + dist[i] + "\n");
 
             // 'to do' => ścieżka od 0 do 4 [sekwencja tych wierzchołków, od 1 do 5]
-
             GFG D_SPL = new GFG();
             D_SPL.InsertVertex("Zero");
             D_SPL.InsertVertex("One");
@@ -63,19 +58,18 @@ namespace e6_dijkstra_s_algorithm
         /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
         /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
 
+        // A utility functions [ methods ] to display shortest path lenght
+        // and it's path values from 0 to 4 [ 60: 0 => 3 => 2 => 4 ]
         int n, e;
         int[,] adj;
-        Vertex[] vertexList;
+        This_Vertex[] vertexList;
 
-        private readonly int Temporary_Value = 1;
-        private readonly int Permanent_Value = 2;
-        private readonly int Nil_Value = -1;
-        private readonly int Infinity_Value = 99999;
+        private readonly int Temporary_Value = 1, Permanent_Value = 2, Nil_Value = -1, Infinity_Value = 99999;
 
         public GFG()
         {
             adj = new int[Max_Amount_of_Vertices, Max_Amount_of_Vertices];
-            vertexList = new Vertex[Max_Amount_of_Vertices];
+            vertexList = new This_Vertex[Max_Amount_of_Vertices];
         }
 
 
@@ -163,7 +157,7 @@ namespace e6_dijkstra_s_algorithm
         }
 
         public void InsertVertex(String name)
-        { vertexList[n++] = new Vertex(name); }
+        { vertexList[n++] = new This_Vertex(name); }
 
         private bool IsAdjacent(int u, int v)
         { return (adj[u, v] != 0); }
