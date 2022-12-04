@@ -31,6 +31,24 @@ namespace e6_dijkstra_s_algorithm
 
             GFG t = new GFG();
             t.dijkstra(graph, 0);
+
+            GFG g = new GFG();
+            g.InsertVertex("Zero");
+            g.InsertVertex("One");
+            g.InsertVertex("Two");
+            g.InsertVertex("Three");
+            g.InsertVertex("Four");
+
+            g.InsertEdge("Zero", "One", 10);
+            g.InsertEdge("Zero", "Four", 100);
+            g.InsertEdge("Zero", "Three", 30);
+            g.InsertEdge("One", "Two", 50);
+            g.InsertEdge("Two", "Four", 10);
+            g.InsertEdge("Three", "Two", 20);
+            g.InsertEdge("Three", "Four", 60);
+
+            g.FindPaths("Zero");
+
             Console.ReadKey();
         }
     }
