@@ -8,20 +8,19 @@ namespace e6_dijkstra_s_algorithm
 {
     public class GFG
     {
-        // https://www.geeksforgeeks.org/csharp-program-for-dijkstras-shortest-path-algorithm-greedy-algo-7/
         // A utility function to find the
         // vertex with minimum distance
         // value, from the set of vertices
         // not yet included in shortest
         // path tree
-        static int V = 5;
+        static int Max_Amount_of_Vertices = 5;
         int minDistance(int[] dist,
                         bool[] sptSet)
         {
             // Initialize min value
             int min = int.MaxValue, min_index = -1;
 
-            for (int v = 0; v < V; v++)
+            for (int v = 0; v < Max_Amount_of_Vertices; v++)
                 if (sptSet[v] == false && dist[v] <= min)
                 {
                     min = dist[v];
@@ -37,24 +36,31 @@ namespace e6_dijkstra_s_algorithm
         {
             Console.Write("Vertex     Distance "
                           + "from Source\n");
-            for (int i = 0; i < V; i++)
+            for (int i = 0; i < Max_Amount_of_Vertices; i++)
                 Console.Write(i + " \t\t " + dist[i] + "\n");
 
-            // to do ścieżka od 0 do 4 [sekwencja tych wierzchołków, od 1 do 5]
+            // 'to do' ścieżka od 0 do 4 [sekwencja tych wierzchołków, od 1 do 5]
 
-            Hi();
-        }
+            GFG g = new GFG();
+            g.InsertVertex("Zero");
+            g.InsertVertex("One");
+            g.InsertVertex("Two");
+            g.InsertVertex("Three");
+            g.InsertVertex("Four");
 
-        public void Hi()
-        {
-            Console.WriteLine("HI");
+            g.InsertEdge("Zero", "One", 10);
+            g.InsertEdge("Zero", "Four", 100);
+            g.InsertEdge("Zero", "Three", 30);
+            g.InsertEdge("One", "Two", 50);
+            g.InsertEdge("Two", "Four", 10);
+            g.InsertEdge("Three", "Two", 20);
+            g.InsertEdge("Three", "Four", 60);
+
+            g.FindPaths("Zero");
         }
 
         /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
         /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
-
-
-        public readonly int MAX_VERTICES = 30;
 
         int n;
         int e;
@@ -68,8 +74,8 @@ namespace e6_dijkstra_s_algorithm
 
         public GFG()
         {
-            adj = new int[MAX_VERTICES, MAX_VERTICES];
-            vertexList = new Vertex[MAX_VERTICES];
+            adj = new int[Max_Amount_of_Vertices, Max_Amount_of_Vertices];
+            vertexList = new Vertex[Max_Amount_of_Vertices];
         }
 
 
@@ -128,13 +134,24 @@ namespace e6_dijkstra_s_algorithm
 
             Dijkstra(s);
 
-            Console.WriteLine("Source Vertex : " + source + "\n");
+            Console.WriteLine("\nSource Vertex: " + source + "\n");
 
-            for (int v = 0; v < n; v++)
+            // for each destination vertex [!!!]
+            /*for (int v = 0; v < n; v++)
             {
                 Console.WriteLine("Destination Vertex : " + vertexList[v].name);
                 if (vertexList[v].pathLength == INFINITY)
                     Console.WriteLine("There is no path from " + source + " to vertex " + vertexList[v].name + "\n");
+                else
+                    FindPath(s, v);
+            }*/
+
+            // selected destination, v = 4
+            for (int v = 4; v < n; v++)
+            {
+                Console.WriteLine("=> Destination Vertex: " + vertexList[v].name);
+                if (vertexList[v].pathLength == INFINITY)
+                    Console.WriteLine("=> There is no path from " + source + " to vertex " + vertexList[v].name + "\n");
                 else
                     FindPath(s, v);
             }
@@ -144,24 +161,20 @@ namespace e6_dijkstra_s_algorithm
         {
             int i, u;
             int[] path = new int[n];
-            int sd = 0;
-            int count = 0;
+            int sd = 0, count = 0;
 
             while (v != s)
             {
-                count++;
-                path[count] = v;
+                count++; path[count] = v;
                 u = vertexList[v].predecessor;
-                sd += adj[u, v];
-                v = u;
+                sd += adj[u, v]; v = u;
             }
-            count++;
-            path[count] = s;
+            count++; path[count] = s;
 
-            Console.Write("Shortest Path is : ");
+            Console.Write("=> Shortest Path is: ");
             for (i = count; i >= 1; i--)
                 Console.Write(path[i] + " ");
-            Console.WriteLine("\n Shortest distance is : " + sd + "\n");
+            Console.WriteLine("\n=> Shortest Path Lenght is: " + sd + "\n");
         }
 
         private int GetIndex(String s)
@@ -169,7 +182,7 @@ namespace e6_dijkstra_s_algorithm
             for (int i = 0; i < n; i++)
                 if (s.Equals(vertexList[i].name))
                     return i;
-            throw new System.InvalidOperationException("Invalid Vertex");
+            throw new System.InvalidOperationException("=> Invalid Vertex");
         }
 
         public void InsertVertex(String name)
@@ -183,16 +196,15 @@ namespace e6_dijkstra_s_algorithm
             return (adj[u, v] != 0);
         }
 
-        /*Insert an edge (s1,s2) */
         public void InsertEdge(String s1, String s2, int wt)
         {
             int u = GetIndex(s1);
             int v = GetIndex(s2);
             if (u == v)
-                throw new System.InvalidOperationException("Not a valid edge");
+                throw new System.InvalidOperationException("=> Not a valid edge");
 
             if (adj[u, v] != 0)
-                Console.Write("Edge already present");
+                Console.Write("=> Edge already present");
             else
             {
                 adj[u, v] = wt;
@@ -210,7 +222,7 @@ namespace e6_dijkstra_s_algorithm
         // matrix representation
         public void dijkstra(int[,] graph, int src)
         {
-            int[] dist = new int[V]; // The output array. dist[i]
+            int[] dist = new int[Max_Amount_of_Vertices]; // The output array. dist[i]
                                      // will hold the shortest
                                      // distance from src to i
 
@@ -218,11 +230,11 @@ namespace e6_dijkstra_s_algorithm
             // i is included in shortest path
             // tree or shortest distance from
             // src to i is finalized
-            bool[] sptSet = new bool[V];
+            bool[] sptSet = new bool[Max_Amount_of_Vertices];
 
             // Initialize all distances as
             // INFINITE and stpSet[] as false
-            for (int i = 0; i < V; i++)
+            for (int i = 0; i < Max_Amount_of_Vertices; i++)
             {
                 dist[i] = int.MaxValue;
                 sptSet[i] = false;
@@ -233,7 +245,7 @@ namespace e6_dijkstra_s_algorithm
             dist[src] = 0;
 
             // Find shortest path for all vertices
-            for (int count = 0; count < V - 1; count++)
+            for (int count = 0; count < Max_Amount_of_Vertices - 1; count++)
             {
                 // Pick the minimum distance vertex
                 // from the set of vertices not yet
@@ -249,7 +261,7 @@ namespace e6_dijkstra_s_algorithm
                 // Update dist value of the adjacent
                 // vertices of the picked vertex.
 
-                for (int v = 0; v < V; v++)
+                for (int v = 0; v < Max_Amount_of_Vertices; v++)
                     // Update dist[v] only if is not in
                     // sptSet, there is an edge from u
                     // to v, and total weight of path
@@ -264,8 +276,7 @@ namespace e6_dijkstra_s_algorithm
             }
 
             // print the constructed distance array
-            printSolution(dist, V);
+            printSolution(dist, Max_Amount_of_Vertices);
         }
-
     }
 }
