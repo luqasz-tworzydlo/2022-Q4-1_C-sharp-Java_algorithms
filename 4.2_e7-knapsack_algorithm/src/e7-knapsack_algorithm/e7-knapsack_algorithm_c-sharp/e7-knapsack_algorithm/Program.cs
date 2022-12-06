@@ -22,15 +22,7 @@ namespace e7_knapsack_algorithm
             // var stopwatch = new Stopwatch();
             // stopwatch.Start();
 
-            GAP_B();
-
-            TASK_NO_1();
-
-            GAP_B();
-
-            //TASK_NO_2();
-
-            GAP_B();
+            RESULTS();
 
             // stopwatch.Stop();
 
@@ -43,6 +35,11 @@ namespace e7_knapsack_algorithm
             Console.WriteLine("\n/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///\n");
         }
 
+        public static void RESULTS()
+        {
+            GAP_B(); TASK_NO_1(); GAP_B();
+            TASK_NO_2(); GAP_B();
+        }
         public static void TASK_NO_1()
         {
             Action<object> write = Console.Write;
@@ -52,21 +49,35 @@ namespace e7_knapsack_algorithm
             const int W = 5; // W => max weight
             var items = new List<Item>();
 
-            // var rand = new Random();
-
+            // method no 1 [random items]
+            /*var rand = new Random();
             for (var i = 0; i < n; i++)
             {
-                // items.Add(new Item { WEIGHT = rand.Next(1, 10), VALUE = rand.Next(1, 100) });
+                items.Add(new Item { WEIGHT = rand.Next(1, 10), VALUE = rand.Next(1, 100) });
+            }*/
+
+            // method no 2 [specific items] (sometimes is wrong)
+            /*for (var i = 0; i < n; i++)
+            {
                 items.Add(new Item { WEIGHT = 2, VALUE = 3 });
                 items.Add(new Item { WEIGHT = 3, VALUE = 4 });
                 items.Add(new Item { WEIGHT = 4, VALUE = 5 });
                 items.Add(new Item { WEIGHT = 5, VALUE = 6 });
-            }
+            }*/
+
+
+            // method no 3 [specific items] (best method overall)
+            items.AddRange(new List<Item>
+                           {
+                               new Item {ID = 1, WEIGHT = 2, VALUE = 3},
+                               new Item {ID = 2, WEIGHT = 3, VALUE = 4},
+                               new Item {ID = 3, WEIGHT = 4, VALUE = 5},
+                               new Item {ID = 4, WEIGHT = 5, VALUE = 6},
+                           });
 
             Knapsack.Init(items, W);
             Knapsack.Run();
 
-            //Knapsack.PrintPicksMatrix(write);
             Knapsack.Print(write, true);
         }
         public static void TASK_NO_2()
@@ -77,21 +88,20 @@ namespace e7_knapsack_algorithm
             const int n = 5; // n => amount of objects
             const int W = 7; // W => max weight
             var items = new List<Item>();
-
-            for (var i = 0; i < n; i++)
-            {
-                items.Add(new Item { WEIGHT = 2, VALUE = 3 });
-                items.Add(new Item { WEIGHT = 3, VALUE = 4 });
-                items.Add(new Item { WEIGHT = 4, VALUE = 5 });
-                items.Add(new Item { WEIGHT = 5, VALUE = 6 });
-                items.Add(new Item { WEIGHT = 6, VALUE = 7 });
-            }
+            
+            items.AddRange(new List<Item>
+                           {
+                               new Item {ID = 1, WEIGHT = 2, VALUE = 3},
+                               new Item {ID = 2, WEIGHT = 3, VALUE = 4},
+                               new Item {ID = 3, WEIGHT = 4, VALUE = 5},
+                               new Item {ID = 4, WEIGHT = 5, VALUE = 6},
+                               new Item {ID = 5, WEIGHT = 6, VALUE = 7},
+                           });
 
             Knapsack.Init(items, W);
             Knapsack.Run();
 
-            Knapsack.PrintPicksMatrix(write);
-            //Knapsack.Print(write, true);
+            Knapsack.Print(write, true);
         }
     }
 
@@ -101,22 +111,22 @@ namespace e7_knapsack_algorithm
         static int[][] PICKS { get; set; } // picks
         static Item[] ITEMS { get; set; } // items
         public static int MaxValue { get; private set; }
-        static int W { get; set; } // max weight
+        static int Max_Weight { get; set; } // max weight
 
         public static void Init(List<Item> items, int maxWeight)
         {
             ITEMS = items.ToArray();
-            W = maxWeight;
+            Max_Weight = maxWeight;
 
             var n = ITEMS.Length;
             MATRIX = new int[n][];
             PICKS = new int[n][];
-            for (var i = 0; i < MATRIX.Length; i++) { MATRIX[i] = new int[W + 1]; }
-            for (var i = 0; i < PICKS.Length; i++) { PICKS[i] = new int[W + 1]; }
+            for (var i = 0; i < MATRIX.Length; i++) { MATRIX[i] = new int[Max_Weight + 1]; }
+            for (var i = 0; i < PICKS.Length; i++) { PICKS[i] = new int[Max_Weight + 1]; }
         }
 
         public static void Run()
-        { MaxValue = Recursive(ITEMS.Length - 1, W, 1); }
+        { MaxValue = Recursive(ITEMS.Length - 1, Max_Weight, 1); }
 
         static int Recursive(int i, int w, int depth)
         {
@@ -156,7 +166,7 @@ namespace e7_knapsack_algorithm
         {
             var list = new List<Item>();
             list.AddRange(ITEMS);
-            var w = W;
+            var w = Max_Weight;
             var i = list.Count - 1;
 
             // display total amount of items [objects]
@@ -165,7 +175,7 @@ namespace e7_knapsack_algorithm
             if (full) { list.ForEach(a => write(string.Format("{0}\n", a))); }
 
             // display max weight & max value
-            write(string.Format("\n=> Max weight = {0}\n", W));
+            write(string.Format("\n=> Max weight = {0}\n", Max_Weight));
             write(string.Format("=> Max value = {0}\n", MaxValue));
             
             // display all picks
@@ -189,34 +199,23 @@ namespace e7_knapsack_algorithm
             write(string.Format("\n=> Value sum: {0}\n=> Weight sum: {1}\n",
                 valueSum, weightSum));
         }
-
-        public static void PrintPicksMatrix(Action<object> write)
-        {
-            write("\n\n");
-            foreach (var i in PICKS)
-            {
-                foreach (var j in i)
-                {
-                    var s = j.ToString();
-                    var _ = s.Length > 1 ? " " : "  ";
-                    write(string.Concat(s, _));
-                }
-                write("\n");
-            }
-        }
-
         static int Max(int a, int b)
         { return a > b ? a : b; }
     }
 
     class Item
     {
-        private static int _COUNTER; // counter for the object
-        public int ID { get; private set; } // id of the object
         public int VALUE { get; set; } // value of the object
         public int WEIGHT { get; set; } // weight of the object
+
+        // method no 1 (set ID values)
+        public int ID { get; set; } // id of the object
+
+        // method no 2 (auto increment ID)
+        /*private static int _COUNTER; // counter for the object
+        public int ID { get; private set; } // id of the object
         public Item()
-        { ID = ++_COUNTER; } // counter in use
+        { ID = ++_COUNTER; } // counter in use*/
 
         public override string ToString()
         { return string.Format("ID: {0}  Value: {1}  Weight: {2}", ID, VALUE, WEIGHT); } // output [!]
