@@ -22,12 +22,37 @@ namespace e7_knapsack_algorithm
             // var stopwatch = new Stopwatch();
             // stopwatch.Start();
 
-            // var rand = new Random();
+            GAP_B();
+
+            TASK_NO_1();
+
+            GAP_B();
+
+            //TASK_NO_2();
+
+            GAP_B();
+
+            // stopwatch.Stop();
+
+            // Console.Write(string.Format("\n\nDuration: {0}\nPress any key to exit a program...\n", stopwatch.Elapsed.ToString()));
+            Console.ReadKey();
+        }
+
+        public static void GAP_B()
+        {
+            Console.WriteLine("\n/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///\n");
+        }
+
+        public static void TASK_NO_1()
+        {
+            Action<object> write = Console.Write;
 
             // Task no 1 [data]
             const int n = 4; // n => amount of objects
             const int W = 5; // W => max weight
             var items = new List<Item>();
+
+            // var rand = new Random();
 
             for (var i = 0; i < n; i++)
             {
@@ -41,91 +66,115 @@ namespace e7_knapsack_algorithm
             Knapsack.Init(items, W);
             Knapsack.Run();
 
-            // stopwatch.Stop();
-
+            //Knapsack.PrintPicksMatrix(write);
             Knapsack.Print(write, true);
+        }
+        public static void TASK_NO_2()
+        {
+            Action<object> write = Console.Write;
 
-            // Console.Write(string.Format("\n\nDuration: {0}\nPress any key to exit a program...\n", stopwatch.Elapsed.ToString()));
-            Console.ReadKey();
+            // Task no 2 [data]
+            const int n = 5; // n => amount of objects
+            const int W = 7; // W => max weight
+            var items = new List<Item>();
+
+            for (var i = 0; i < n; i++)
+            {
+                items.Add(new Item { WEIGHT = 2, VALUE = 3 });
+                items.Add(new Item { WEIGHT = 3, VALUE = 4 });
+                items.Add(new Item { WEIGHT = 4, VALUE = 5 });
+                items.Add(new Item { WEIGHT = 5, VALUE = 6 });
+                items.Add(new Item { WEIGHT = 6, VALUE = 7 });
+            }
+
+            Knapsack.Init(items, W);
+            Knapsack.Run();
+
+            Knapsack.PrintPicksMatrix(write);
+            //Knapsack.Print(write, true);
         }
     }
 
     static class Knapsack
     {
-        static int[][] M { get; set; } // matrix
-        static int[][] P { get; set; } // picks
-        static Item[] I { get; set; } // items
+        static int[][] MATRIX { get; set; } // matrix
+        static int[][] PICKS { get; set; } // picks
+        static Item[] ITEMS { get; set; } // items
         public static int MaxValue { get; private set; }
         static int W { get; set; } // max weight
 
         public static void Init(List<Item> items, int maxWeight)
         {
-            I = items.ToArray();
+            ITEMS = items.ToArray();
             W = maxWeight;
 
-            var n = I.Length;
-            M = new int[n][];
-            P = new int[n][];
-            for (var i = 0; i < M.Length; i++) { M[i] = new int[W + 1]; }
-            for (var i = 0; i < P.Length; i++) { P[i] = new int[W + 1]; }
+            var n = ITEMS.Length;
+            MATRIX = new int[n][];
+            PICKS = new int[n][];
+            for (var i = 0; i < MATRIX.Length; i++) { MATRIX[i] = new int[W + 1]; }
+            for (var i = 0; i < PICKS.Length; i++) { PICKS[i] = new int[W + 1]; }
         }
 
         public static void Run()
-        { MaxValue = Recursive(I.Length - 1, W, 1); }
+        { MaxValue = Recursive(ITEMS.Length - 1, W, 1); }
 
         static int Recursive(int i, int w, int depth)
         {
             var take = 0;
-            if (M[i][w] != 0) { return M[i][w]; }
+            if (MATRIX[i][w] != 0) { return MATRIX[i][w]; }
 
             if (i == 0)
             {
-                if (I[i].WEIGHT <= w)
+                if (ITEMS[i].WEIGHT <= w)
                 {
-                    P[i][w] = 1;
-                    M[i][w] = I[0].VALUE;
-                    return I[i].VALUE;
+                    PICKS[i][w] = 1;
+                    MATRIX[i][w] = ITEMS[0].VALUE;
+                    return ITEMS[i].VALUE;
                 }
 
-                P[i][w] = -1;
-                M[i][w] = 0;
+                PICKS[i][w] = -1;
+                MATRIX[i][w] = 0;
                 return 0;
             }
 
-            if (I[i].WEIGHT <= w)
+            if (ITEMS[i].WEIGHT <= w)
             {
-                take = I[i].VALUE + Recursive(i - 1, w - I[i].WEIGHT, depth + 1);
+                take = ITEMS[i].VALUE + Recursive(i - 1, w - ITEMS[i].WEIGHT, depth + 1);
             }
 
             var dontTake = Recursive(i - 1, w, depth + 1);
 
-            M[i][w] = Max(take, dontTake);
+            MATRIX[i][w] = Max(take, dontTake);
+            
+            if (take > dontTake) { PICKS[i][w] = 1; }
+            else { PICKS[i][w] = -1; }
 
-            if (take > dontTake) { P[i][w] = 1; }
-            else { P[i][w] = -1; }
-
-            return M[i][w];
+            return MATRIX[i][w];
         }
 
         public static void Print(Action<object> write, bool full)
         {
             var list = new List<Item>();
-            list.AddRange(I);
+            list.AddRange(ITEMS);
             var w = W;
             var i = list.Count - 1;
 
+            // display total amount of items [objects]
             write(string.Format("=> Total Amount of Items: = {0}\n\n", list.Count));
+            // display every ID with its value and weight
             if (full) { list.ForEach(a => write(string.Format("{0}\n", a))); }
 
-            write(string.Format("\nMax weight = {0}\n", W));
-            write(string.Format("Max value = {0}\n", MaxValue));
-            write("\nPicks were:\n");
-
-            var valueSum = 0;
+            // display max weight & max value
+            write(string.Format("\n=> Max weight = {0}\n", W));
+            write(string.Format("=> Max value = {0}\n", MaxValue));
+            
+            // display all picks
+            write("\n=> Picks were:\n");
+                        var valueSum = 0;
             var weightSum = 0;
             while (i >= 0 && w >= 0)
             {
-                if (P[i][w] == 1)
+                if (PICKS[i][w] == 1)
                 {
                     valueSum += list[i].VALUE;
                     weightSum += list[i].WEIGHT;
@@ -135,8 +184,25 @@ namespace e7_knapsack_algorithm
 
                 i--;
             }
-            write(string.Format("\nvalue sum: {0}\nweight sum: {1}",
+
+            // display value sum & weight sum
+            write(string.Format("\n=> Value sum: {0}\n=> Weight sum: {1}\n",
                 valueSum, weightSum));
+        }
+
+        public static void PrintPicksMatrix(Action<object> write)
+        {
+            write("\n\n");
+            foreach (var i in PICKS)
+            {
+                foreach (var j in i)
+                {
+                    var s = j.ToString();
+                    var _ = s.Length > 1 ? " " : "  ";
+                    write(string.Concat(s, _));
+                }
+                write("\n");
+            }
         }
 
         static int Max(int a, int b)
