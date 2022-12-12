@@ -1,0 +1,8 @@
+C:\Users\Łukasz Tworzydło\source\repos\e7-knapsack_algorithm\e7-knapsack_algorithm\obj\Debug\e7-knapsack_algorithm.csproj.AssemblyReference.cache
+C:\Users\Łukasz Tworzydło\source\repos\e7-knapsack_algorithm\e7-knapsack_algorithm\obj\Debug\e7-knapsack_algorithm.csproj.SuggestedBindingRedirects.cache
+C:\Users\Łukasz Tworzydło\source\repos\e7-knapsack_algorithm\e7-knapsack_algorithm\obj\Debug\e7-knapsack_algorithm.csproj.CoreCompileInputs.cache
+C:\Users\Łukasz Tworzydło\source\repos\e7-knapsack_algorithm\e7-knapsack_algorithm\bin\Debug\e7-knapsack_algorithm.exe.config
+C:\Users\Łukasz Tworzydło\source\repos\e7-knapsack_algorithm\e7-knapsack_algorithm\bin\Debug\e7-knapsack_algorithm.exe
+C:\Users\Łukasz Tworzydło\source\repos\e7-knapsack_algorithm\e7-knapsack_algorithm\bin\Debug\e7-knapsack_algorithm.pdb
+C:\Users\Łukasz Tworzydło\source\repos\e7-knapsack_algorithm\e7-knapsack_algorithm\obj\Debug\e7-knapsack_algorithm.exe
+C:\Users\Łukasz Tworzydło\source\repos\e7-knapsack_algorithm\e7-knapsack_algorithm\obj\Debug\e7-knapsack_algorithm.pdb
