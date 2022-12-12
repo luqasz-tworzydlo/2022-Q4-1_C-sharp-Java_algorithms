@@ -44,6 +44,8 @@ namespace e7_knapsack_algorithm
         {
             Action<object> write = Console.Write;
 
+            Console.WriteLine("TASK NO 1\n");
+
             // Task no 1 [data]
             const int n = 4; // n => amount of objects
             const int W = 5; // W => max weight
@@ -83,6 +85,8 @@ namespace e7_knapsack_algorithm
         public static void TASK_NO_2()
         {
             Action<object> write = Console.Write;
+
+            Console.WriteLine("TASK NO 2\n");
 
             // Task no 2 [data]
             const int n = 5; // n => amount of objects
@@ -180,7 +184,7 @@ namespace e7_knapsack_algorithm
             
             // display all picks
             write("\n=> Picks were:\n");
-                        var valueSum = 0;
+            var valueSum = 0;
             var weightSum = 0;
             while (i >= 0 && w >= 0)
             {
@@ -191,13 +195,14 @@ namespace e7_knapsack_algorithm
                     if (full) { write(string.Format("{0}\n", list[i])); }
                     w -= list[i].WEIGHT;
                 }
-
                 i--;
             }
 
             // display value sum & weight sum
             write(string.Format("\n=> Value sum: {0}\n=> Weight sum: {1}\n",
                 valueSum, weightSum));
+
+            write(string.Format("\n=> Answer: b_max = {0}\n", valueSum));
         }
         static int Max(int a, int b)
         { return a > b ? a : b; }
