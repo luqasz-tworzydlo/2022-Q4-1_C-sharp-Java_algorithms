@@ -18,50 +18,34 @@ namespace e7_knapsack_algorithm
     {
         private static void Main(string[] args)
         {
-            Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en-US");
-
             Action<object> write = Console.Write;
-            var stopwatch = new Stopwatch();
-            stopwatch.Start();
+            // var stopwatch = new Stopwatch();
+            // stopwatch.Start();
 
-            write("Running ..\n\n");
-            //var rand = new Random();
+            // var rand = new Random();
 
-            // --------- Insert data here            
-            const int N = 4;
-            const int maxWeight = 5;
+            // Task no 1 [data]
+            const int n = 4; // n => amount of objects
+            const int W = 5; // W => max weight
             var items = new List<Item>();
 
-            for (var i = 0; i < N; i++)
+            for (var i = 0; i < n; i++)
             {
-                //items.Add(new Item { w = rand.Next(1, 10), v = rand.Next(1, 100) });
-                items.Add(new Item { w = 2, v = 3 });
-                items.Add(new Item { w = 3, v = 4 });
-                items.Add(new Item { w = 4, v = 5 });
-                items.Add(new Item { w = 5, v = 6 });
+                // items.Add(new Item { WEIGHT = rand.Next(1, 10), VALUE = rand.Next(1, 100) });
+                items.Add(new Item { WEIGHT = 2, VALUE = 3 });
+                items.Add(new Item { WEIGHT = 3, VALUE = 4 });
+                items.Add(new Item { WEIGHT = 4, VALUE = 5 });
+                items.Add(new Item { WEIGHT = 5, VALUE = 6 });
             }
-            //items.AddRange(new List<Item>
-            //               {
-            //                   new Item {w = 5, v = 10},
-            //                   new Item {w = 4, v = 40},
-            //                   new Item {w = 6, v = 30},
-            //                   new Item {w = 3, v = 50},
-            //               });
 
-            //---------
-
-            Knapsack.Init(items, maxWeight);
+            Knapsack.Init(items, W);
             Knapsack.Run();
 
-            stopwatch.Stop();
+            // stopwatch.Stop();
 
-            write("Done\n\n");
-
-            Knapsack.PrintPicksMatrix(write);
             Knapsack.Print(write, true);
 
-            write(string.Format("\n\nDuration: {0}\nPress a key to exit\n",
-                                stopwatch.Elapsed.ToString()));
+            // Console.Write(string.Format("\n\nDuration: {0}\nPress any key to exit a program...\n", stopwatch.Elapsed.ToString()));
             Console.ReadKey();
         }
     }
@@ -87,9 +71,7 @@ namespace e7_knapsack_algorithm
         }
 
         public static void Run()
-        {
-            MaxValue = Recursive(I.Length - 1, W, 1);
-        }
+        { MaxValue = Recursive(I.Length - 1, W, 1); }
 
         static int Recursive(int i, int w, int depth)
         {
@@ -98,11 +80,11 @@ namespace e7_knapsack_algorithm
 
             if (i == 0)
             {
-                if (I[i].w <= w)
+                if (I[i].WEIGHT <= w)
                 {
                     P[i][w] = 1;
-                    M[i][w] = I[0].v;
-                    return I[i].v;
+                    M[i][w] = I[0].VALUE;
+                    return I[i].VALUE;
                 }
 
                 P[i][w] = -1;
@@ -110,9 +92,9 @@ namespace e7_knapsack_algorithm
                 return 0;
             }
 
-            if (I[i].w <= w)
+            if (I[i].WEIGHT <= w)
             {
-                take = I[i].v + Recursive(i - 1, w - I[i].w, depth + 1);
+                take = I[i].VALUE + Recursive(i - 1, w - I[i].WEIGHT, depth + 1);
             }
 
             var dontTake = Recursive(i - 1, w, depth + 1);
@@ -132,7 +114,7 @@ namespace e7_knapsack_algorithm
             var w = W;
             var i = list.Count - 1;
 
-            write(string.Format("Items: = {0}\n", list.Count));
+            write(string.Format("=> Total Amount of Items: = {0}\n\n", list.Count));
             if (full) { list.ForEach(a => write(string.Format("{0}\n", a))); }
 
             write(string.Format("\nMax weight = {0}\n", W));
@@ -145,10 +127,10 @@ namespace e7_knapsack_algorithm
             {
                 if (P[i][w] == 1)
                 {
-                    valueSum += list[i].v;
-                    weightSum += list[i].w;
+                    valueSum += list[i].VALUE;
+                    weightSum += list[i].WEIGHT;
                     if (full) { write(string.Format("{0}\n", list[i])); }
-                    w -= list[i].w;
+                    w -= list[i].WEIGHT;
                 }
 
                 i--;
@@ -157,42 +139,20 @@ namespace e7_knapsack_algorithm
                 valueSum, weightSum));
         }
 
-        public static void PrintPicksMatrix(Action<object> write)
-        {
-            write("\n\n");
-            foreach (var i in P)
-            {
-                foreach (var j in i)
-                {
-                    var s = j.ToString();
-                    var _ = s.Length > 1 ? " " : "  ";
-                    write(string.Concat(s, _));
-                }
-                write("\n");
-            }
-        }
-
         static int Max(int a, int b)
-        {
-            return a > b ? a : b;
-        }
+        { return a > b ? a : b; }
     }
 
     class Item
     {
-        private static int _counter;
-        public int Id { get; private set; }
-        public int v { get; set; } // value
-        public int w { get; set; } // weight
+        private static int _COUNTER; // counter for the object
+        public int ID { get; private set; } // id of the object
+        public int VALUE { get; set; } // value of the object
+        public int WEIGHT { get; set; } // weight of the object
         public Item()
-        {
-            Id = ++_counter;
-        }
+        { ID = ++_COUNTER; } // counter in use
 
         public override string ToString()
-        {
-            return string.Format("Id: {0}  v: {1}  w: {2}",
-                                 Id, v, w);
-        }
+        { return string.Format("ID: {0}  Value: {1}  Weight: {2}", ID, VALUE, WEIGHT); } // output [!]
     }
 }
