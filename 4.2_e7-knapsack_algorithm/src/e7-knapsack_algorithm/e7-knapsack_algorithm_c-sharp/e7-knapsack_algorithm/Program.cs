@@ -8,17 +8,20 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Threading;
 
-// e7_knapsack_algorithm
-
 namespace e7_knapsack_algorithm
 {
-    /// 0-1 Knapsack in C#
-    /// Recursive version
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Łukasz Tworzydło - nr albumu: gd29623 [zadanie z problemu plecakowego [wersja 0-1] z 21.11.2022]
+    // Informatyka, grupa laboratoryjna: INiS3_PR2.2 [Algorytmy i struktury danych]
+    // knapsack [version 0-1] =>> problem plecakowy [wersja 0-1]
+    //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
     public class Program
     {
+        // 0-1 Knapsack in C# =>>> Recursive version
         private static void Main(string[] args)
         {
-            Action<object> write = Console.Write;
             // var stopwatch = new Stopwatch();
             // stopwatch.Start();
 
