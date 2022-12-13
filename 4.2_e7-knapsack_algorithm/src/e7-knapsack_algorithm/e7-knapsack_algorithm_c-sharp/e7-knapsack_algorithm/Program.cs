@@ -22,21 +22,22 @@ namespace e7_knapsack_algorithm
         // 0-1 Knapsack in C# =>>> Recursive version
         private static void Main(string[] args)
         {
-            // var stopwatch = new Stopwatch();
-            // stopwatch.Start();
+            // stopwatch [measure the amount of time that
+            // elapses between its activation and deactivation]
+            /*var stopwatch = new Stopwatch();
+            stopwatch.Start();*/
 
             RESULTS();
 
-            // stopwatch.Stop();
-
-            // Console.Write(string.Format("\n\nDuration: {0}\nPress any key to exit a program...\n", stopwatch.Elapsed.ToString()));
+            /*stopwatch.Stop();
+            Console.Write(string.Format("\n\nDuration: {0}\n" +
+                "=> Press any key to exit a program...\n",
+                stopwatch.Elapsed.ToString()));*/
             Console.ReadKey();
         }
 
         public static void GAP_B()
-        {
-            Console.WriteLine("\n/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///\n");
-        }
+        { Console.WriteLine("\n/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///\n"); }
 
         public static void RESULTS()
         {
@@ -117,23 +118,23 @@ namespace e7_knapsack_algorithm
         static int[][] MATRIX { get; set; } // matrix
         static int[][] PICKS { get; set; } // picks
         static Item[] ITEMS { get; set; } // items
-        public static int MaxValue { get; private set; }
-        static int Max_Weight { get; set; } // max weight
+        public static int MaxValue { get; private set; } // max value
+        static int MaxWeight { get; set; } // max weight
 
         public static void Init(List<Item> items, int maxWeight)
         {
             ITEMS = items.ToArray();
-            Max_Weight = maxWeight;
+            MaxWeight = maxWeight;
 
             var n = ITEMS.Length;
             MATRIX = new int[n][];
             PICKS = new int[n][];
-            for (var i = 0; i < MATRIX.Length; i++) { MATRIX[i] = new int[Max_Weight + 1]; }
-            for (var i = 0; i < PICKS.Length; i++) { PICKS[i] = new int[Max_Weight + 1]; }
+            for (var i = 0; i < MATRIX.Length; i++) { MATRIX[i] = new int[MaxWeight + 1]; }
+            for (var i = 0; i < PICKS.Length; i++) { PICKS[i] = new int[MaxWeight + 1]; }
         }
 
         public static void Run()
-        { MaxValue = Recursive(ITEMS.Length - 1, Max_Weight, 1); }
+        { MaxValue = Recursive(ITEMS.Length - 1, MaxWeight, 1); }
 
         static int Recursive(int i, int w, int depth)
         {
@@ -155,9 +156,7 @@ namespace e7_knapsack_algorithm
             }
 
             if (ITEMS[i].WEIGHT <= w)
-            {
-                take = ITEMS[i].VALUE + Recursive(i - 1, w - ITEMS[i].WEIGHT, depth + 1);
-            }
+            { take = ITEMS[i].VALUE + Recursive(i - 1, w - ITEMS[i].WEIGHT, depth + 1); }
 
             var dontTake = Recursive(i - 1, w, depth + 1);
 
@@ -173,7 +172,7 @@ namespace e7_knapsack_algorithm
         {
             var list = new List<Item>();
             list.AddRange(ITEMS);
-            var w = Max_Weight;
+            var w = MaxWeight;
             var i = list.Count - 1;
 
             // display total amount of items [objects]
@@ -182,7 +181,7 @@ namespace e7_knapsack_algorithm
             if (full) { list.ForEach(a => write(string.Format("{0}\n", a))); }
 
             // display max weight & max value
-            write(string.Format("\n=> Max weight = {0}\n", Max_Weight));
+            write(string.Format("\n=> Max weight = {0}\n", MaxWeight));
             write(string.Format("=> Max value = {0}\n", MaxValue));
             
             // display all picks
