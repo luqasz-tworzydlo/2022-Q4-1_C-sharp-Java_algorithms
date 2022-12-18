@@ -27,11 +27,11 @@ namespace e8_matrix_chain_multiplication
             // znajdywanie optymalnej wartości
             // => Final_Cost - ostateczny koszt
             // => Calculate_Cost - oblicz koszt
-            Cost Final_Cost = Calculate_Cost.FindOptionalCost(Our_Array);
+            Cost_Calculation Final_Cost = Calculate_Cost.FindOptionalCost(Our_Array);
 
             // wypisywanie naszych wartości
             Console.WriteLine("=> Rozmieszczenie nawiasów [przy mmnożeniu]: " + Final_Cost.label
-                + "\n\n=> Nasz wynik [koszt] mnożenia macieży: " + Final_Cost.cost + "\n");
+                + "\n\n=> Ostateczny wynik [koszt] mnożenia naszych macieży: " + Final_Cost.cost + "\n");
 
             // wymuszenie wcisnięcia klawisza przez
             // użytkownika w celu wyłączenia programu
@@ -39,7 +39,7 @@ namespace e8_matrix_chain_multiplication
         }
 
         public static void OptimalCost(int[][] Our_Matrices,
-        string[] Matrices_Labels, int Previous_Cost, Cost Matric_Cost)
+        string[] Matrices_Labels, int Previous_Cost, Cost_Calculation Matric_Cost)
         // OptimalCost - optymalny koszt
         // Our_Matrices - nasze macierze
         // Matrices_Labels - etykiety macierzy
@@ -116,16 +116,16 @@ namespace e8_matrix_chain_multiplication
         {
             // wyświetlanie wyglądu naszych macierzy,
             // które będziemy później mnożyć
-            Console.Write("=> Wygląd naszych macierzy, które będziemy mnożyć: \n" +
-                "( ");
+            Console.Write("=> Wygląd naszych macierzy, które będziemy mnożyć:" +
+                "\n\t( ");
             foreach (int[] Row_s in Our_Matrices)
             {
-                Console.Write("( " + string.Join(" ", Row_s) + " " + "), ");
+                Console.Write("( " + string.Join(" ", Row_s) + " " + ") ");
             }
             Console.WriteLine(")\n");
         }
 
-        public Cost FindOptionalCost(int[] Our_Array)
+        public Cost_Calculation FindOptionalCost(int[] Our_Array)
         {
             // FindOptionalCost - znajdź optymalny koszt
             int[][] Our_Matrices = new int[Our_Array.Length - 1][];
@@ -142,15 +142,17 @@ namespace e8_matrix_chain_multiplication
 
             Print_Matrices(Our_Matrices);
 
-            Cost Matric_Cost = new Cost();
+            Cost_Calculation Matric_Cost = new Cost_Calculation();
             OptimalCost(Our_Matrices, Matrices_Labels, 0, Matric_Cost);
 
             return Matric_Cost;
         }
     }
-    internal class Cost // => Cost - koszt
+
+    internal class Cost_Calculation // => Cost_Calculation - kalkulacja kosztu
     {
         public string label = "";
         public int cost = Int32.MaxValue;
     }
+
 }
