@@ -6,13 +6,7 @@ using System.Threading.Tasks;
 
 namespace e8_matrix_chain_multiplication
 {
-    public class Cost // => Cost - koszt
-    {
-        public string label = "";
-        public int cost = Int32.MaxValue;
-    }
-
-    public class Program
+    internal class Program
     {
         public static void Main(string[] args)
         {
@@ -36,8 +30,8 @@ namespace e8_matrix_chain_multiplication
             Cost Final_Cost = Calculate_Cost.FindOptionalCost(Our_Array);
 
             // wypisywanie naszych wartości
-            Console.WriteLine("=> Rozmieszczenie nawiasów: " + Final_Cost.label
-                + "\n=> Koszt, nasze rozwiązanie: " + Final_Cost.cost + "\n");
+            Console.WriteLine("=> Rozmieszczenie nawiasów [przy mmnożeniu]: " + Final_Cost.label
+                + "\n\n=> Nasz wynik [koszt] mnożenia macieży: " + Final_Cost.cost + "\n");
 
             // wymuszenie wcisnięcia klawisza przez
             // użytkownika w celu wyłączenia programu
@@ -80,11 +74,11 @@ namespace e8_matrix_chain_multiplication
             for (int i = 0; i < Matrice_l - 1; i++)
             {
                 // Matrice_j => nasza matryca nr 2 [ matryca j ]
-                int Matrice_j; int[][] newMatrix = new int[Matrice_l - 1][];
+                int Matrice_j; int[][] Our_New_Matrix = new int[Matrice_l - 1][];
 
-                for (int x = 0; x < Matrice_l - 1; x++) newMatrix[x] = new int[2];
+                for (int x = 0; x < Matrice_l - 1; x++) Our_New_Matrix[x] = new int[2];
 
-                string[] newLabels = new string[Matrice_l - 1]; int subIndex = 0;
+                string[] Our_New_Labels = new string[Matrice_l - 1]; int subIndex = 0;
 
                 // łączenie dwóch macierzy w jedną macierz
                 // przy każdej pętli przesuwa się pozycja łączenia
@@ -92,65 +86,71 @@ namespace e8_matrix_chain_multiplication
                 // => jeśli i jest równe 1 to A ( BC ) D ...
                 // => jeśli i jest równe 2 to A B ( CD ) ...
                 // a następnie znajdywanie kosztu łączenia dwóch macierzy
-                int cost = (Our_Matrices[i][0] * Our_Matrices[i][1] * Our_Matrices[i + 1][1]);
+                int Our_Total_Cost = (Our_Matrices[i][0] * Our_Matrices[i][1] * Our_Matrices[i + 1][1]);
 
                 for (Matrice_j = 0; Matrice_j < i; Matrice_j++)
                 {
-                    newMatrix[subIndex] = Our_Matrices[Matrice_j];
-                    newLabels[subIndex++] = Matrices_Labels[Matrice_j];
+                    Our_New_Matrix[subIndex] = Our_Matrices[Matrice_j];
+                    Our_New_Labels[subIndex++] = Matrices_Labels[Matrice_j];
                 }
 
                 // po wcześniejszym połączeniu dwóch
                 // macierzy są budowane nowe macierze
                 // [ z uwzględnieniem zachowania etykiet ]
-                newMatrix[subIndex][0] = Our_Matrices[i][0];
-                newMatrix[subIndex][1] = Our_Matrices[i + 1][1];
-                newLabels[subIndex++] = "(" + Matrices_Labels[i] + Matrices_Labels[i + 1] + ")";
+                Our_New_Matrix[subIndex][0] = Our_Matrices[i][0];
+                Our_New_Matrix[subIndex][1] = Our_Matrices[i + 1][1];
+                Our_New_Labels[subIndex++] = "(" + Matrices_Labels[i] + Matrices_Labels[i + 1] + ")";
 
                 for (Matrice_j = i + 2; Matrice_j < Matrice_l; Matrice_j++)
                 {
-                    newMatrix[subIndex] = Our_Matrices[Matrice_j];
-                    newLabels[subIndex++] = Matrices_Labels[Matrice_j];
+                    Our_New_Matrix[subIndex] = Our_Matrices[Matrice_j];
+                    Our_New_Labels[subIndex++] = Matrices_Labels[Matrice_j];
                 }
 
-                OptimalCost(newMatrix, newLabels,
-                Previous_Cost + cost, Matric_Cost);
+                OptimalCost(Our_New_Matrix, Our_New_Labels,
+                Previous_Cost + Our_Total_Cost, Matric_Cost);
             }
         }
 
-        private static void PrintMatrix(int[][] matrices)
+        private static void Print_Matrices(int[][] Our_Matrices)
         {
-            // wyświetlanie naszej macierzy
-            Console.Write("=> Wygląd naszych macierzy: \n" +
+            // wyświetlanie wyglądu naszych macierzy,
+            // które będziemy później mnożyć
+            Console.Write("=> Wygląd naszych macierzy, które będziemy mnożyć: \n" +
                 "( ");
-            foreach (int[] row in matrices)
+            foreach (int[] Row_s in Our_Matrices)
             {
-                Console.Write("( " + string.Join(" ", row) + " " + "), ");
+                Console.Write("( " + string.Join(" ", Row_s) + " " + "), ");
             }
             Console.WriteLine(")\n");
         }
 
-        public Cost FindOptionalCost(int[] arr)
+        public Cost FindOptionalCost(int[] Our_Array)
         {
             // FindOptionalCost - znajdź optymalny koszt
-            int[][] matrices = new int[arr.Length - 1][];
-            string[] labels = new string[arr.Length - 1];
+            int[][] Our_Matrices = new int[Our_Array.Length - 1][];
+            string[] Matrices_Labels = new string[Our_Array.Length - 1];
 
-            for (int i = 0; i < arr.Length - 1; i++)
+            for (int i = 0; i < Our_Array.Length - 1; i++)
             {
-                matrices[i] = new int[2];
-                matrices[i][0] = arr[i];
-                matrices[i][1] = arr[i + 1];
-                labels[i] = Convert.ToString((char)(65 + i));
+                Our_Matrices[i] = new int[2];
+                Our_Matrices[i][0] = Our_Array[i];
+                Our_Matrices[i][1] = Our_Array[i + 1];
+                Matrices_Labels[i] = Convert.ToString((char)(65 + i));
                 // przypisanie każdej matrycy oznaczenia (A,B,C,D)
             }
 
-            PrintMatrix(matrices);
+            Print_Matrices(Our_Matrices);
 
-            Cost Cost = new Cost();
-            OptimalCost(matrices, labels, 0, Cost);
+            Cost Matric_Cost = new Cost();
+            OptimalCost(Our_Matrices, Matrices_Labels, 0, Matric_Cost);
 
-            return Cost;
+            return Matric_Cost;
         }
+    }
+    internal class Cost // => Cost - koszt
+    {
+        public string label = "";
+        public int cost = Int32.MaxValue;
     }
 }
