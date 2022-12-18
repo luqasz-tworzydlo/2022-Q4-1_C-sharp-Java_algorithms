@@ -6,6 +6,14 @@ using System.Threading.Tasks;
 
 namespace e8_matrix_chain_multiplication
 {
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Łukasz Tworzydło - nr albumu: gd29623 [zadanie z ustawieniem nawiasów i mnożeniem macierzy z 05.12.2022]
+    // Informatyka, grupa laboratoryjna: INiS3_PR2.2 [Algorytmy i struktury danych]
+    // [ dane wejściowe (*) => rozmiar tablicy z wymiarami oraz elementy tej tablicy ]
+    // [ dane wyjściowe (*) => optymalna ilość mnożeń & optymalna ilość nawiasów ]
+    //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
     internal class Program
     {
         public static void Main(string[] args)
@@ -29,9 +37,10 @@ namespace e8_matrix_chain_multiplication
             // => Calculate_Cost - oblicz koszt
             Cost_Calculation Final_Cost = Calculate_Cost.FindOptionalCost(Our_Array);
 
-            // wypisywanie naszych wartości
-            Console.WriteLine("=> Rozmieszczenie nawiasów [przy mmnożeniu]: " + Final_Cost.label
-                + "\n\n=> Ostateczny wynik [koszt] mnożenia naszych macieży: " + Final_Cost.cost + "\n");
+            // wypisywanie naszych wartości (ostateczny wynik [koszt] mnożenia naszych macierzy,
+            // czyli optymalna ilość mnożeń naszych macierzy oraz optymalne rozmieszczenie nawiasów
+            Console.WriteLine("\n=> Optymalna ilość mnożeń naszych macierzy: " + Final_Cost.cost
+                + "\n\n=> Optymalne ustawienie nawiasów [macierzy]: " + Final_Cost.label + "\n");
 
             // wymuszenie wcisnięcia klawisza przez
             // użytkownika w celu wyłączenia programu
@@ -116,13 +125,13 @@ namespace e8_matrix_chain_multiplication
         {
             // wyświetlanie wyglądu naszych macierzy,
             // które będziemy później mnożyć
-            Console.Write("=> Wygląd naszych macierzy, które będziemy mnożyć:" +
+            Console.Write("\n=> Wygląd naszych macierzy, które będziemy mnożyć:" +
                 "\n\t( ");
             foreach (int[] Row_s in Our_Matrices)
             {
                 Console.Write("( " + string.Join(" ", Row_s) + " " + ") ");
             }
-            Console.WriteLine(")\n");
+            Console.WriteLine(")");
         }
 
         public Cost_Calculation FindOptionalCost(int[] Our_Array)
