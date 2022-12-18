@@ -16,6 +16,7 @@ namespace e8_matrix_chain_multiplication
     {
         public static void Main(string[] args)
         {
+            // Main - nasza metoda wywoławcza
             // wywołanie naszej funkcji, metody
             // => Calculate_Cost - oblicz koszt
             Program Calculate_Cost = new Program();
@@ -28,19 +29,20 @@ namespace e8_matrix_chain_multiplication
             // znajdywanie optymalnej wartości
             // => Final_Cost - ostateczny koszt
             // => Calculate_Cost - oblicz koszt
-            Cost Final_Cost = Calculate_Cost.findOptionalCost(Our_Array);
+            Cost Final_Cost = Calculate_Cost.FindOptionalCost(Our_Array);
 
             // wypisywanie naszych wartości
             Console.WriteLine("=> Kategoria: \n" + Final_Cost.label
                 + "=> Koszt: \n" + Final_Cost.cost + "\n");
 
             // wymuszenie wcisnięcia klawisza przez
-            // użytkownika w celu wyłączenia funkcji
+            // użytkownika w celu wyłączenia programu
             Console.ReadKey();
         }
 
-        public static void optimalCost(int[][] Our_Matrices,
+        public static void OptimalCost(int[][] Our_Matrices,
         string[] Matrices_Labels, int Previous_Cost, Cost Matric_Cost)
+        // OptimalCost - optymalny koszt
         // Our_Matrices - nasze macierze
         // Matrices_Labels - etykiety macierzy
         // Previous_Cost - poprzedni koszt
@@ -53,24 +55,19 @@ namespace e8_matrix_chain_multiplication
 
             if (Matrice_l < 2)
             {
-                Matric_Cost.cost = 0;
-                return;
+                Matric_Cost.cost = 0; return;
             }
             else if (Matrice_l == 2)
             {
-                int cost = Previous_Cost
-                + (Our_Matrices[0][0] *
-                Our_Matrices[0][1] *
-                Our_Matrices[1][1]);
+                int cost = Previous_Cost + (Our_Matrices[0][0] *
+                Our_Matrices[0][1] * Our_Matrices[1][1]);
 
                 // Wyłapanie minimalnego kosztu matrycy
                 // [ istotne dla całego programu (!!!) ]
                 if (cost < Matric_Cost.cost)
                 {
                     Matric_Cost.cost = cost;
-                    Matric_Cost.label
-                    = "(" + Matrices_Labels[0]
-                    + Matrices_Labels[1] + ")";
+                    Matric_Cost.label = "(" + Matrices_Labels[0] + Matrices_Labels[1] + ")";
                 }
                 return;
             }
@@ -79,15 +76,18 @@ namespace e8_matrix_chain_multiplication
             for (int i = 0; i < Matrice_l - 1; i++)
             {
                 // Matrice_j => nasza matryca nr 2 [ matryca j ]
-                int Matrice_j;
-                int[][] newMatrix = new int[Matrice_l - 1][];
+                int Matrice_j; int[][] newMatrix = new int[Matrice_l - 1][];
 
-                for (int x = 0; x < Matrice_l - 1; x++)
-                    newMatrix[x] = new int[2];
+                for (int x = 0; x < Matrice_l - 1; x++) newMatrix[x] = new int[2];
 
-                string[] newLabels = new string[Matrice_l - 1];
-                int subIndex = 0;
+                string[] newLabels = new string[Matrice_l - 1]; int subIndex = 0;
 
+                // łączenie dwóch macierzy w jedną macierz
+                // przy każdej pętli przesuwa się pozycja łączenia
+                // => jeśli i jest równe 0 to ( AB ) C D ...
+                // => jeśli i jest równe 1 to A ( BC ) D ...
+                // => jeśli i jest równe 2 to A B ( CD ) ...
+                // a następnie znajdywanie kosztu łączenia dwóch macierzy
                 int cost = (Our_Matrices[i][0] * Our_Matrices[i][1] * Our_Matrices[i + 1][1]);
 
                 for (Matrice_j = 0; Matrice_j < i; Matrice_j++)
@@ -96,10 +96,12 @@ namespace e8_matrix_chain_multiplication
                     newLabels[subIndex++] = Matrices_Labels[Matrice_j];
                 }
 
+                // po wcześniejszym połączeniu dwóch
+                // macierzy są budowane nowe macierze
+                // [ z uwzględnieniem zachowania etykiet ]
                 newMatrix[subIndex][0] = Our_Matrices[i][0];
                 newMatrix[subIndex][1] = Our_Matrices[i + 1][1];
-                newLabels[subIndex++]
-                = "(" + Matrices_Labels[i] + Matrices_Labels[i + 1] + ")";
+                newLabels[subIndex++] = "(" + Matrices_Labels[i] + Matrices_Labels[i + 1] + ")";
 
                 for (Matrice_j = i + 2; Matrice_j < Matrice_l; Matrice_j++)
                 {
@@ -107,26 +109,25 @@ namespace e8_matrix_chain_multiplication
                     newLabels[subIndex++] = Matrices_Labels[Matrice_j];
                 }
 
-                optimalCost(newMatrix, newLabels,
+                OptimalCost(newMatrix, newLabels,
                 Previous_Cost + cost, Matric_Cost);
             }
         }
 
-        /*private static void printMatrix(int[][] matrices)
+        private static void PrintMatrix(int[][] matrices)
         {
+            // wyświetlanie naszej macierzy
             Console.Write("matrices = \n[");
             foreach (int[] row in matrices)
             {
                 Console.Write("[ " + string.Join(" ", row) + " " + "], ");
             }
             Console.WriteLine("]");
-        }*/
+        }
 
-
-
-        public Cost findOptionalCost(int[] arr)
+        public Cost FindOptionalCost(int[] arr)
         {
-            // STEP -1 : Prepare and convert inout as Matrix
+            // FindOptionalCost - znajdź optymalny koszt
             int[][] matrices = new int[arr.Length - 1][];
             string[] labels = new string[arr.Length - 1];
 
@@ -137,10 +138,10 @@ namespace e8_matrix_chain_multiplication
                 matrices[i][1] = arr[i + 1];
                 labels[i] = Convert.ToString((char)(65 + i));
             }
-            // printMatrix(matrices);
+            // PrintMatrix(matrices);
 
             Cost Cost = new Cost();
-            optimalCost(matrices, labels, 0, Cost);
+            OptimalCost(matrices, labels, 0, Cost);
 
             return Cost;
         }
