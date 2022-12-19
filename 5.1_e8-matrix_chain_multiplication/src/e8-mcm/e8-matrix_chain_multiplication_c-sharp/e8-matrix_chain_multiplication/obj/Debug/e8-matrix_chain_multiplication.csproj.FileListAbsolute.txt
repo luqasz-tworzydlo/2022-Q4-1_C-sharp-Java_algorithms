@@ -1,0 +1,8 @@
+C:\Users\Łukasz Tworzydło\source\repos\e8-matrix_chain_multiplication\e8-matrix_chain_multiplication\bin\Debug\e8-matrix_chain_multiplication.exe.config
+C:\Users\Łukasz Tworzydło\source\repos\e8-matrix_chain_multiplication\e8-matrix_chain_multiplication\bin\Debug\e8-matrix_chain_multiplication.exe
+C:\Users\Łukasz Tworzydło\source\repos\e8-matrix_chain_multiplication\e8-matrix_chain_multiplication\bin\Debug\e8-matrix_chain_multiplication.pdb
+C:\Users\Łukasz Tworzydło\source\repos\e8-matrix_chain_multiplication\e8-matrix_chain_multiplication\obj\Debug\e8-matrix_chain_multiplication.csproj.AssemblyReference.cache
+C:\Users\Łukasz Tworzydło\source\repos\e8-matrix_chain_multiplication\e8-matrix_chain_multiplication\obj\Debug\e8-matrix_chain_multiplication.csproj.SuggestedBindingRedirects.cache
+C:\Users\Łukasz Tworzydło\source\repos\e8-matrix_chain_multiplication\e8-matrix_chain_multiplication\obj\Debug\e8-matrix_chain_multiplication.csproj.CoreCompileInputs.cache
+C:\Users\Łukasz Tworzydło\source\repos\e8-matrix_chain_multiplication\e8-matrix_chain_multiplication\obj\Debug\e8-matrix_chain_multiplication.exe
+C:\Users\Łukasz Tworzydło\source\repos\e8-matrix_chain_multiplication\e8-matrix_chain_multiplication\obj\Debug\e8-matrix_chain_multiplication.pdb
