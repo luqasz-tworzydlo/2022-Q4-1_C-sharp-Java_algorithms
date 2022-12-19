@@ -26,14 +26,18 @@ namespace e8_matrix_chain_multiplication
             // używać do odczytywania naszych wymiarów]
             int[] Our_Array = { 2, 3, 4, 5, 2 };
 
+            // tabelka do odczytywania wymiarów
+            // | P0 | P1 | P2 | P3 | P4 |
+            // | 2  | 3  | 4  | 5  | 2  |
+
             // znajdywanie optymalnej wartości
             // => Final_Cost - ostateczny koszt
             // => Calculate_Cost - oblicz koszt
             Cost Final_Cost = Calculate_Cost.FindOptionalCost(Our_Array);
 
             // wypisywanie naszych wartości
-            Console.WriteLine("=> Kategoria: \n" + Final_Cost.label
-                + "=> Koszt: \n" + Final_Cost.cost + "\n");
+            Console.WriteLine("=> Rozmieszczenie nawiasów: " + Final_Cost.label
+                + "\n=> Koszt, nasze rozwiązanie: " + Final_Cost.cost + "\n");
 
             // wymuszenie wcisnięcia klawisza przez
             // użytkownika w celu wyłączenia programu
@@ -117,12 +121,13 @@ namespace e8_matrix_chain_multiplication
         private static void PrintMatrix(int[][] matrices)
         {
             // wyświetlanie naszej macierzy
-            Console.Write("matrices = \n[");
+            Console.Write("=> Wygląd naszych macierzy: \n" +
+                "( ");
             foreach (int[] row in matrices)
             {
-                Console.Write("[ " + string.Join(" ", row) + " " + "], ");
+                Console.Write("( " + string.Join(" ", row) + " " + "), ");
             }
-            Console.WriteLine("]");
+            Console.WriteLine(")\n");
         }
 
         public Cost FindOptionalCost(int[] arr)
@@ -137,8 +142,10 @@ namespace e8_matrix_chain_multiplication
                 matrices[i][0] = arr[i];
                 matrices[i][1] = arr[i + 1];
                 labels[i] = Convert.ToString((char)(65 + i));
+                // przypisanie każdej matrycy oznaczenia (A,B,C,D)
             }
-            // PrintMatrix(matrices);
+
+            PrintMatrix(matrices);
 
             Cost Cost = new Cost();
             OptimalCost(matrices, labels, 0, Cost);
