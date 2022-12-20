@@ -1,0 +1,16 @@
+C:\Users\Łukasz Tworzydło\source\repos\e9-bubblesort_algorithm\e9-bubblesort_algorithm\bin\Debug\e9-bubblesort_algorithm.exe.config
+C:\Users\Łukasz Tworzydło\source\repos\e9-bubblesort_algorithm\e9-bubblesort_algorithm\bin\Debug\e9-bubblesort_algorithm.exe
+C:\Users\Łukasz Tworzydło\source\repos\e9-bubblesort_algorithm\e9-bubblesort_algorithm\bin\Debug\e9-bubblesort_algorithm.pdb
+C:\Users\Łukasz Tworzydło\source\repos\e9-bubblesort_algorithm\e9-bubblesort_algorithm\obj\Debug\e9-bubblesort_algorithm.csproj.AssemblyReference.cache
+C:\Users\Łukasz Tworzydło\source\repos\e9-bubblesort_algorithm\e9-bubblesort_algorithm\obj\Debug\e9-bubblesort_algorithm.csproj.SuggestedBindingRedirects.cache
+C:\Users\Łukasz Tworzydło\source\repos\e9-bubblesort_algorithm\e9-bubblesort_algorithm\obj\Debug\e9-bubblesort_algorithm.csproj.CoreCompileInputs.cache
+C:\Users\Łukasz Tworzydło\source\repos\e9-bubblesort_algorithm\e9-bubblesort_algorithm\obj\Debug\e9-bubblesort_algorithm.exe
+C:\Users\Łukasz Tworzydło\source\repos\e9-bubblesort_algorithm\e9-bubblesort_algorithm\obj\Debug\e9-bubblesort_algorithm.pdb
+D:\Carpe Tonus\GitHub Repositories\2022-Q4-1_C-sharp_algorithms\6.1_e9-bubblesort_algorithm\src\2022-12-19\e9-bubblesort_algorithm\e9-bubblesort_algorithm\bin\Debug\e9-bubblesort_algorithm.exe.config
+D:\Carpe Tonus\GitHub Repositories\2022-Q4-1_C-sharp_algorithms\6.1_e9-bubblesort_algorithm\src\2022-12-19\e9-bubblesort_algorithm\e9-bubblesort_algorithm\bin\Debug\e9-bubblesort_algorithm.exe
+D:\Carpe Tonus\GitHub Repositories\2022-Q4-1_C-sharp_algorithms\6.1_e9-bubblesort_algorithm\src\2022-12-19\e9-bubblesort_algorithm\e9-bubblesort_algorithm\bin\Debug\e9-bubblesort_algorithm.pdb
+D:\Carpe Tonus\GitHub Repositories\2022-Q4-1_C-sharp_algorithms\6.1_e9-bubblesort_algorithm\src\2022-12-19\e9-bubblesort_algorithm\e9-bubblesort_algorithm\obj\Debug\e9-bubblesort_algorithm.csproj.AssemblyReference.cache
+D:\Carpe Tonus\GitHub Repositories\2022-Q4-1_C-sharp_algorithms\6.1_e9-bubblesort_algorithm\src\2022-12-19\e9-bubblesort_algorithm\e9-bubblesort_algorithm\obj\Debug\e9-bubblesort_algorithm.csproj.SuggestedBindingRedirects.cache
+D:\Carpe Tonus\GitHub Repositories\2022-Q4-1_C-sharp_algorithms\6.1_e9-bubblesort_algorithm\src\2022-12-19\e9-bubblesort_algorithm\e9-bubblesort_algorithm\obj\Debug\e9-bubblesort_algorithm.csproj.CoreCompileInputs.cache
+D:\Carpe Tonus\GitHub Repositories\2022-Q4-1_C-sharp_algorithms\6.1_e9-bubblesort_algorithm\src\2022-12-19\e9-bubblesort_algorithm\e9-bubblesort_algorithm\obj\Debug\e9-bubblesort_algorithm.exe
+D:\Carpe Tonus\GitHub Repositories\2022-Q4-1_C-sharp_algorithms\6.1_e9-bubblesort_algorithm\src\2022-12-19\e9-bubblesort_algorithm\e9-bubblesort_algorithm\obj\Debug\e9-bubblesort_algorithm.pdb
