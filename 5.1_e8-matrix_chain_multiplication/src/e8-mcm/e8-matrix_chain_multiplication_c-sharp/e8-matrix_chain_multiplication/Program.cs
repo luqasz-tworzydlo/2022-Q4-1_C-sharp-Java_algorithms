@@ -39,8 +39,8 @@ namespace e8_matrix_chain_multiplication
 
             // wypisywanie naszych wartości (ostateczny wynik [koszt] mnożenia naszych macierzy,
             // czyli optymalna ilość mnożeń naszych macierzy oraz optymalne rozmieszczenie nawiasów
-            Console.WriteLine("\n=> Optymalna ilość mnożeń naszych macierzy: " + Final_Cost.cost
-                + "\n\n=> Optymalne ustawienie nawiasów [macierzy]: " + Final_Cost.label + "\n");
+            Console.WriteLine("\n=> Optymalna ilość mnożeń naszych macierzy: " + Final_Cost.final_cost
+                + "\n\n=> Optymalne ustawienie nawiasów [macierzy]: " + Final_Cost.final_label + "\n");
 
             // wymuszenie wcisnięcia klawisza przez
             // użytkownika w celu wyłączenia programu
@@ -61,9 +61,7 @@ namespace e8_matrix_chain_multiplication
             int Matrice_l = Our_Matrices.Length;
 
             if (Matrice_l < 2)
-            {
-                Matric_Cost.cost = 0; return;
-            }
+            { Matric_Cost.final_cost = 0; return; }
             else if (Matrice_l == 2)
             {
                 int cost = Previous_Cost + (Our_Matrices[0][0] *
@@ -71,15 +69,14 @@ namespace e8_matrix_chain_multiplication
 
                 // Wyłapanie minimalnego kosztu matrycy
                 // [ istotne dla całego programu (!!!) ]
-                if (cost < Matric_Cost.cost)
+                if (cost < Matric_Cost.final_cost)
                 {
-                    Matric_Cost.cost = cost;
-                    Matric_Cost.label = "(" + Matrices_Labels[0] + Matrices_Labels[1] + ")";
+                    Matric_Cost.final_cost = cost;
+                    Matric_Cost.final_label = "(" + Matrices_Labels[0] + Matrices_Labels[1] + ")";
                 }
                 return;
             }
 
-            // redukcja - wykorzystanie rekurencji
             for (int i = 0; i < Matrice_l - 1; i++)
             {
                 // Matrice_j => nasza matryca nr 2 [ matryca j ]
@@ -89,7 +86,7 @@ namespace e8_matrix_chain_multiplication
 
                 string[] Our_New_Labels = new string[Matrice_l - 1]; int subIndex = 0;
 
-                // łączenie dwóch macierzy w jedną macierz
+                // łączenie naszych macierzy w jedną macierz
                 // przy każdej pętli przesuwa się pozycja łączenia
                 // => jeśli i jest równe 0 to ( AB ) C D ...
                 // => jeśli i jest równe 1 to A ( BC ) D ...
@@ -121,35 +118,24 @@ namespace e8_matrix_chain_multiplication
             }
         }
 
-        private static void Print_Matrices(int[][] Our_Matrices)
-        {
-            // wyświetlanie wyglądu naszych macierzy,
-            // które będziemy później mnożyć
-            Console.Write("\n=> Wygląd naszych macierzy, które będziemy mnożyć:" +
-                "\n\t( ");
-            foreach (int[] Row_s in Our_Matrices)
-            {
-                Console.Write("( " + string.Join(" ", Row_s) + " " + ") ");
-            }
-            Console.WriteLine(")");
-        }
-
         public Cost_Calculation FindOptionalCost(int[] Our_Array)
         {
             // FindOptionalCost - znajdź optymalny koszt
             int[][] Our_Matrices = new int[Our_Array.Length - 1][];
             string[] Matrices_Labels = new string[Our_Array.Length - 1];
+            int number = 77; // użyte do wskazania litery, od której ma zacząć
 
             for (int i = 0; i < Our_Array.Length - 1; i++)
             {
                 Our_Matrices[i] = new int[2];
                 Our_Matrices[i][0] = Our_Array[i];
                 Our_Matrices[i][1] = Our_Array[i + 1];
-                Matrices_Labels[i] = Convert.ToString((char)(65 + i));
-                // przypisanie każdej matrycy oznaczenia (A,B,C,D)
+                Matrices_Labels[i] = Convert.ToString((char)(number + i));
+                // przypisanie każdej matrycy unikalnego oznaczenia
+                // 'number + i' inicjuje oznaczenie matryycy, gdzie w przypadku
+                // => wartości'number = 65' zaczyna od A (czyli kolejność: A,B,C,D)
+                // => wartości'number = 77' zaczyna od M (czyli kolejność: M,N,O,P)
             }
-
-            Print_Matrices(Our_Matrices);
 
             Cost_Calculation Matric_Cost = new Cost_Calculation();
             OptimalCost(Our_Matrices, Matrices_Labels, 0, Matric_Cost);
@@ -157,11 +143,4 @@ namespace e8_matrix_chain_multiplication
             return Matric_Cost;
         }
     }
-
-    internal class Cost_Calculation // => Cost_Calculation - kalkulacja kosztu
-    {
-        public string label = "";
-        public int cost = Int32.MaxValue;
-    }
-
 }
