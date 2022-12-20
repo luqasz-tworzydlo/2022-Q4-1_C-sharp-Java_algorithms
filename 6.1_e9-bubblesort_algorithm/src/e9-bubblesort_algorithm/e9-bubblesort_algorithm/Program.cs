@@ -14,6 +14,8 @@ namespace e9_bubblesort_algorithm
         public static int[] Our_Array = { 5, 7, 8, 3, 1, 4, 6, 8 };
         static void Main(string[] args)
         {
+            BeforeASorting();
+
             AfterAFirstSort();
             AfterASecondSort();
             AfterAThirdSort();
@@ -21,6 +23,13 @@ namespace e9_bubblesort_algorithm
             Console.WriteLine();
             FinalResult();
             Console.ReadKey();
+        }
+        static void BeforeASorting()
+        {
+            Console.WriteLine("\n=> Our unsorted list:");
+            foreach (int position in Our_Array)
+                Console.Write(position + " ");
+            Console.WriteLine();
         }
         static void FinalResult()
         {
@@ -44,7 +53,7 @@ namespace e9_bubblesort_algorithm
         static void AfterAFirstSort()
         {
             int qTemporary;
-            for (int jValue_Right = 0; jValue_Right <= 1 - 2; jValue_Right++)
+            for (int jValue_Right = 0; jValue_Right <= 2 - 2; jValue_Right++)
             {
                 for (int iValue_Left = 0; iValue_Left <= Our_Array.Length - 2; iValue_Left++)
                 {
@@ -82,7 +91,7 @@ namespace e9_bubblesort_algorithm
         static void AfterAThirdSort()
         {
             int qTemporary;
-            for (int jValue_Right = 0; jValue_Right <= 3 - 2; jValue_Right++)
+            for (int jValue_Right = 0; jValue_Right <= 2 - 2; jValue_Right++)
             {
                 for (int iValue_Left = 0; iValue_Left <= Our_Array.Length - 2; iValue_Left++)
                 {
