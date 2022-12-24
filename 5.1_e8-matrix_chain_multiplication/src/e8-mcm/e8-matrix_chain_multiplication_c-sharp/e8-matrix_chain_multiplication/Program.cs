@@ -18,6 +18,96 @@ namespace e8_matrix_chain_multiplication
     {
         public static void Main(string[] args)
         {
+            Console.WriteLine("Which version of a Matrix Chain Multiplication do you want to choose?" +
+                "\n=> to choose a method no 1 write: 'one'" +
+                "\n=> to choose a method no 2 write: 'two'\n");
+            string SelectMethod;
+            SelectMethod = Convert.ToString(Console.ReadLine());
+            switch(SelectMethod)
+            {
+                default: Console.WriteLine("You didn't select a method... maybe a next time ;p"); break;
+                case "one": Console.WriteLine("\nYou have selected a 'Method no 1'"); MethodNo1(); break;
+                case "two": Console.WriteLine("\nYou have selected a 'Method no 2'"); MethodNo2(); break;
+            }
+            Console.ReadKey();
+        }
+        public static void MethodNo2()
+        {
+            // sposób nr 1 [ do oznaczania macierzy (poprzez litery) ]
+            int numberLetter = 76; // użyte do wskazania litery, od której ma zacząć
+                                          // sposób nr 2 [ do oznaczania macierzy (poprzez liczby) ]
+            int numberNumber = 0; // użyte do numerowania macierzy, zaczynając od 1 bądź 0
+                                         // [jest to zależne od końcowej formy danej funkcji,
+                                         // od miejsca ustawienia 'plusów' w funkcji]
+
+            // wartości do odczytywania wymiarów
+            // => Our_Array - nasza tablica [którą będziemy
+            // używać do odczytywania naszych wymiarów]
+            int[] Our_Array = new int[] { 2, 3, 4, 5, 2 }; 
+            int Matrix_Size = Our_Array.Length;
+
+            // tabelka do odczytywania wymiarów
+            // | P0 | P1 | P2 | P3 | P4 |
+            // | 2  | 3  | 4  | 5  | 2  |
+
+            Console.WriteLine("\n=> Optymalna ilość mnożeń naszych macierzy: " + FindOptionalCostAOrder(Our_Array, Matrix_Size));
+
+            Console.ReadKey();
+
+            int FindOptionalCostAOrder(int[] OurChain, int OurNumber)
+            {
+                int[,] Our_Matrices = new int[OurNumber, OurNumber];
+                int[,] Matrix_Bracket = new int[OurNumber, OurNumber];
+                int iFirstMatrice, jSecondMatrice, kOperations, lDifference, qValue;
+
+                for (iFirstMatrice = 1; iFirstMatrice < OurNumber; iFirstMatrice++)
+                    Our_Matrices[iFirstMatrice, iFirstMatrice] = 0;
+
+                for (lDifference = 2; lDifference < OurNumber; lDifference++)
+                {
+                    for (iFirstMatrice = 1; iFirstMatrice < OurNumber - lDifference + 1; iFirstMatrice++)
+                    {
+                        jSecondMatrice = iFirstMatrice + lDifference - 1;
+                        if (jSecondMatrice == OurNumber) continue;
+                        Our_Matrices[iFirstMatrice, jSecondMatrice] = int.MaxValue;
+
+                        for (kOperations = iFirstMatrice; kOperations <= jSecondMatrice - 1; kOperations++)
+                        {
+                            qValue = Our_Matrices[iFirstMatrice, kOperations] + Our_Matrices[kOperations + 1, jSecondMatrice] + OurChain[iFirstMatrice - 1] * OurChain[kOperations] * OurChain[jSecondMatrice];
+                            if (qValue < Our_Matrices[iFirstMatrice, jSecondMatrice]) { Our_Matrices[iFirstMatrice, jSecondMatrice] = qValue; Matrix_Bracket[iFirstMatrice, jSecondMatrice] = kOperations; }
+                        }
+                    }
+                }
+
+                Console.Write("\n=> Optymalne ustawienie nawiasów [macierzy]:");
+                Matrices_Brackets(1, OurNumber - 1, OurNumber, Matrix_Bracket);
+                Console.WriteLine(""); return Our_Matrices[1, OurNumber - 1];
+            }
+
+            void Matrices_Brackets(int iFirstMatrice, int jSecondMatrice, int OurNumber, int[,] MatrixBracket)
+            {
+                // sposób nr 1 [ do oznaczania macierzy (poprzez litery) ]
+                if (iFirstMatrice == jSecondMatrice) { Console.Write(Convert.ToString((char)(numberLetter + iFirstMatrice))); return; }
+                // przypisanie każdej matrycy unikalnego oznaczenia
+                // 'number + i' inicjuje oznaczenie matryycy, gdzie w przypadku
+                // => wartości'number = 64' zaczyna od A (czyli kolejność: A,B,C,D)
+                // => wartości'number = 76' zaczyna od M (czyli kolejność: M,N,O,P)
+
+                // sposób nr 2 A [ do oznaczania macierzy (poprzez liczby) - zaczęcie od 1, czyli 1,2,3,4 ]
+                // if (iFirstMatrice == jSecondMatrice) { Console.Write($"M{++numberNumber}"); return; }
+
+                // sposób nr 2 B [ do oznaczania macierzy (poprzez liczby) - zaczęcie od 0, czyli 0,1,2,3 ]
+                // if (iFirstMatrice == jSecondMatrice) { Console.Write($"M{numberNumber++}"); return; }
+
+
+                Console.Write("("); Matrices_Brackets(iFirstMatrice, MatrixBracket[iFirstMatrice, jSecondMatrice], OurNumber, MatrixBracket);
+                Matrices_Brackets(MatrixBracket[iFirstMatrice, jSecondMatrice] + 1, jSecondMatrice, OurNumber, MatrixBracket); Console.Write(")");
+            }
+        }
+
+        public static void MethodNo1()
+        {
+
             // Main - nasza metoda wywoławcza
             // wywołanie naszej funkcji, metody
             // => Calculate_Cost - oblicz koszt

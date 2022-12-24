@@ -16,7 +16,12 @@ namespace e8_matrix_chain_multiplication
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     internal class Program
     {
-        static int number = 76; // użyte do wskazania litery, od której ma zacząć
+        // sposób nr 1 [ do oznaczania macierzy (poprzez litery) ]
+        static int numberLetter = 76; // użyte do wskazania litery, od której ma zacząć
+        // sposób nr 2 [ do oznaczania macierzy (poprzez liczby) ]
+        static int numberNumber = 0; // użyte do numerowania macierzy, zaczynając od 1 bądź 0
+                                     // [jest to zależne od końcowej formy danej funkcji,
+                                     // od miejsca ustawienia 'plusów' w funkcji]
         public static void Main()
         {
             // wartości do odczytywania wymiarów
@@ -66,11 +71,19 @@ namespace e8_matrix_chain_multiplication
 
         static void Matrices_Brackets(int iFirstMatrice, int jSecondMatrice, int OurNumber, int[,] MatrixBracket)
         {
-            if (iFirstMatrice == jSecondMatrice) { Console.Write(Convert.ToString((char)(number + iFirstMatrice))); return; }
+            // sposób nr 1 [ do oznaczania macierzy (poprzez litery) ]
+            if (iFirstMatrice == jSecondMatrice) { Console.Write(Convert.ToString((char)(numberLetter + iFirstMatrice))); return; }
             // przypisanie każdej matrycy unikalnego oznaczenia
             // 'number + i' inicjuje oznaczenie matryycy, gdzie w przypadku
             // => wartości'number = 64' zaczyna od A (czyli kolejność: A,B,C,D)
             // => wartości'number = 76' zaczyna od M (czyli kolejność: M,N,O,P)
+
+            // sposób nr 2 A [ do oznaczania macierzy (poprzez liczby) - zaczęcie od 1, czyli 1,2,3,4 ]
+            // if (iFirstMatrice == jSecondMatrice) { Console.Write($"M{++numberNumber}"); return; }
+
+            // sposób nr 2 B [ do oznaczania macierzy (poprzez liczby) - zaczęcie od 0, czyli 0,1,2,3 ]
+            // if (iFirstMatrice == jSecondMatrice) { Console.Write($"M{numberNumber++}"); return; }
+
 
             Console.Write("("); Matrices_Brackets(iFirstMatrice, MatrixBracket[iFirstMatrice, jSecondMatrice], OurNumber, MatrixBracket);
             Matrices_Brackets(MatrixBracket[iFirstMatrice, jSecondMatrice] + 1, jSecondMatrice, OurNumber, MatrixBracket); Console.Write(")");
