@@ -18,18 +18,42 @@ namespace e8_matrix_chain_multiplication
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Which version of a Matrix Chain Multiplication do you want to choose?" +
-                "\n=> to choose a method no 1 write: 'one'" +
-                "\n=> to choose a method no 2 write: 'two'\n");
+            Methods();
+        }
+        public static void Methods()
+        {
+            Console.WriteLine("\nWhich version of a Matrix Chain Multiplication do you want to choose?" +
+                "\n=> to choose a method no 1 write: 'ONE'" +
+                "\n=> to choose a method no 2 write: 'TWO'\n");
             string SelectMethod;
             SelectMethod = Convert.ToString(Console.ReadLine());
-            switch(SelectMethod)
+            switch (SelectMethod)
             {
-                default: Console.WriteLine("You didn't select a method... maybe a next time ;p"); break;
-                case "one": Console.WriteLine("\nYou have selected a 'Method no 1'"); MethodNo1(); break;
-                case "two": Console.WriteLine("\nYou have selected a 'Method no 2'"); MethodNo2(); break;
+                default: Console.WriteLine("You didn't select a method... maybe a next time ;p"); Restart(); break;
+                case "ONE": Console.WriteLine("\nYou have selected a 'Method no 1'"); MethodNo1(); Restart(); break;
+                case "1": Console.WriteLine("\nYou have selected a 'Method no 1'"); MethodNo1(); Restart(); break;
+                case "TWO": Console.WriteLine("\nYou have selected a 'Method no 2'"); MethodNo2(); Restart(); break;
+                case "2": Console.WriteLine("\nYou have selected a 'Method no 2'"); MethodNo2(); Restart(); break;
             }
-            Console.ReadKey();
+        }
+        public static void Restart()
+        {
+            Console.WriteLine("\nDo you would like to restart a program?" +
+                "\nWrite \"YES\" if you do... or \"NO\"\n");
+
+            string YoN;
+            YoN = Convert.ToString(Console.ReadLine());
+            switch (YoN)
+            {
+                case "YES":
+                    Methods(); break;
+                case "Y":
+                    Methods(); break;
+                case "NO": Console.WriteLine("That's okay. See ya ;>"); break;
+                case "N": Console.WriteLine("That's okay. See ya ;>"); break;
+                default:
+                    Console.WriteLine("You didn't write anything...;<"); break;
+            }
         }
         public static void MethodNo2()
         {
