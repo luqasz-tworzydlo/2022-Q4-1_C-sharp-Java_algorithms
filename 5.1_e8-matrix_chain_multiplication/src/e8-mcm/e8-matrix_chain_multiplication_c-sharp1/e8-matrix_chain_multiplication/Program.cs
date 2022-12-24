@@ -137,10 +137,25 @@ namespace e8_matrix_chain_multiplication
                 // => wartości'number = 77' zaczyna od M (czyli kolejność: M,N,O,P)
             }
 
+            Print_Matrices(Our_Matrices);
+
             Cost_Calculation Matric_Cost = new Cost_Calculation();
             OptimalCost(Our_Matrices, Matrices_Labels, 0, Matric_Cost);
 
             return Matric_Cost;
+        }
+
+        private static void Print_Matrices(int[][] Our_Matrices)
+        {
+            // wyświetlanie wyglądu naszych macierzy,
+            // które będziemy później mnożyć
+            Console.Write("=> Wygląd naszych macierzy, które będziemy mnożyć: \n" +
+                "( ");
+            foreach (int[] Row_s in Our_Matrices)
+            {
+                Console.Write("( " + string.Join(" ", Row_s) + " " + "), ");
+            }
+            Console.WriteLine(")\n");
         }
     }
 }
