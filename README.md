@@ -1,12 +1,12 @@
-# 2022-Q4-1_C-sharp_algorithms
-2022-Q4-1 ( C# ) [algorithms]
+# 2022-Q4-1_C-sharp-Java_algorithms
+2022-Q4-1 ( C# - Java ) [algorithms]
 
 /=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=
 
-Learning how to use algorithms in C#.
+Learning how to use algorithms in C# / Java.
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-Nauka wykorzystywania algorytmów w C#.
+Nauka wykorzystywania algorytmów w C# / Java.
 
 /=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=
