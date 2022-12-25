@@ -3,14 +3,22 @@ import java.util.PriorityQueue;
 public class AMain {
     public static void main(String[] args)
     {
+        // sposób notacji nr 1
         // nasze symbole w Drzewie Huffmana
-        String HuffmanSymbols = "caefdb";
-        char[] OurSymbols = HuffmanSymbols.toCharArray();
+        // String HuffmanSymbols = "caefdb"; // [1-3]
+        // char[] OurSymbols = HuffmanSymbols.toCharArray(); // [2-3]
         // wartości liczbowe, czyli częstotliwość symboli,
         // które zostały powyżej wypisane [ poniższe wartości
         // zostały posegregoweane od najmniejszej do największej,
         // jak i również analogicznie ich symbole powyżej ]
-        int[] SymbolsFrequency = {17,27,47,57,77,87};
+        // int[] SymbolsFrequency = {17,27,47,57,77,87}; // [3-3]
+
+        // sposób notacji nr 2
+        // poniższe wartości [symbole oraz ich częstotliwości]
+        // nie zostały posegregowane, lecz podane pokolei [*]
+        String HuffmanSymbols = "abcdef"; // [1-3]
+        char[] OurSymbols = HuffmanSymbols.toCharArray(); // [2-3]
+        int[] SymbolsFrequency = {27,87,17,77,47,57}; // [3-3]
 
         // stworzenie, zbudowanie naszego Drzewa Huffmana
         BHuffmanTree OurTree = BuildHuffmanTree(SymbolsFrequency,OurSymbols);
@@ -52,7 +60,7 @@ public class AMain {
 
             // wyświetlenie naszych wyników, a więc symbolu, częstotliwości oraz Kodu Huffmana
             // dla danego liścia [symbolu], który jest określony jako 'HuffmanCode_Prefix'
-            System.out.println(HuffmanLeaf.ValueSymbol + "\t" + HuffmanLeaf.FrequencyOfTheSymbol + "\t" + HuffmanCode_Prefix);
+            System.out.println(HuffmanLeaf.ValueSymbol + "\t\t\t" + HuffmanLeaf.FrequencyOfTheSymbol + "\t\t\t" + HuffmanCode_Prefix);
 
         } else if (tree instanceof DHuffmanNode) {
             DHuffmanNode HuffmanNode = (DHuffmanNode)tree;
