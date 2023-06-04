@@ -1,0 +1,16 @@
+C:\Users\luqasz\source\repos\e11-recursive_method\e11-recursive_method\bin\Debug\e11-recursive_method.exe.config
+C:\Users\luqasz\source\repos\e11-recursive_method\e11-recursive_method\bin\Debug\e11-recursive_method.exe
+C:\Users\luqasz\source\repos\e11-recursive_method\e11-recursive_method\bin\Debug\e11-recursive_method.pdb
+C:\Users\luqasz\source\repos\e11-recursive_method\e11-recursive_method\obj\Debug\e11-recursive_method.csproj.AssemblyReference.cache
+C:\Users\luqasz\source\repos\e11-recursive_method\e11-recursive_method\obj\Debug\e11-recursive_method.csproj.SuggestedBindingRedirects.cache
+C:\Users\luqasz\source\repos\e11-recursive_method\e11-recursive_method\obj\Debug\e11-recursive_method.csproj.CoreCompileInputs.cache
+C:\Users\luqasz\source\repos\e11-recursive_method\e11-recursive_method\obj\Debug\e11-recursive_method.exe
+C:\Users\luqasz\source\repos\e11-recursive_method\e11-recursive_method\obj\Debug\e11-recursive_method.pdb
+D:\Carpe Tonus\GitHub Repositories\2022-Q4-1_C-sharp-Java_algorithms [!!!]\6.3_e11-recursive_method\src\2023-06-03\e11-recursive_method\e11-recursive_method\bin\Debug\e11-recursive_method.exe.config
+D:\Carpe Tonus\GitHub Repositories\2022-Q4-1_C-sharp-Java_algorithms [!!!]\6.3_e11-recursive_method\src\2023-06-03\e11-recursive_method\e11-recursive_method\bin\Debug\e11-recursive_method.exe
+D:\Carpe Tonus\GitHub Repositories\2022-Q4-1_C-sharp-Java_algorithms [!!!]\6.3_e11-recursive_method\src\2023-06-03\e11-recursive_method\e11-recursive_method\bin\Debug\e11-recursive_method.pdb
+D:\Carpe Tonus\GitHub Repositories\2022-Q4-1_C-sharp-Java_algorithms [!!!]\6.3_e11-recursive_method\src\2023-06-03\e11-recursive_method\e11-recursive_method\obj\Debug\e11-recursive_method.csproj.AssemblyReference.cache
+D:\Carpe Tonus\GitHub Repositories\2022-Q4-1_C-sharp-Java_algorithms [!!!]\6.3_e11-recursive_method\src\2023-06-03\e11-recursive_method\e11-recursive_method\obj\Debug\e11-recursive_method.csproj.SuggestedBindingRedirects.cache
+D:\Carpe Tonus\GitHub Repositories\2022-Q4-1_C-sharp-Java_algorithms [!!!]\6.3_e11-recursive_method\src\2023-06-03\e11-recursive_method\e11-recursive_method\obj\Debug\e11-recursive_method.csproj.CoreCompileInputs.cache
+D:\Carpe Tonus\GitHub Repositories\2022-Q4-1_C-sharp-Java_algorithms [!!!]\6.3_e11-recursive_method\src\2023-06-03\e11-recursive_method\e11-recursive_method\obj\Debug\e11-recursive_method.exe
+D:\Carpe Tonus\GitHub Repositories\2022-Q4-1_C-sharp-Java_algorithms [!!!]\6.3_e11-recursive_method\src\2023-06-03\e11-recursive_method\e11-recursive_method\obj\Debug\e11-recursive_method.pdb
